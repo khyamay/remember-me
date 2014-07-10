@@ -21,14 +21,31 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
   </head>
-  <body ng-app="starter">
+  <body ng-app="mainApp" animation="slide-left-right-android">
 
     <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter</h1>
+      <ion-header-bar class="bar bar-header bar-positive">
+        <h1 class="title">Remember Me</h1>
       </ion-header-bar>
       <ion-content>
       </ion-content>
+      <ion-tabs class="tabs-icon-top tabs-positive">
+      <ion-tab title="Home" icon-on="ion-ios7-home" icon-off="ion-ios7-home-outline" href="#">
+      <ion-nav-view name=""></ion-nav-view>
+      </ion-tab>
+       <ion-tab title="Notes" icon-on="ion-ios7-compose" 
+          icon-off="ion-ios7-compose-outline" href="#">
+          <ion-nav-view name="auth-signin"></ion-nav-view>
+       </ion-tab>
+       <ion-tab title="Pictures" icon-on="ion-ios7-camera" 
+          icon-off="ion-ios7-camera-outline" href="#">
+          <ion-nav-view name="auth-signup"></ion-nav-view>
+       </ion-tab>
+       <ion-tab title="Messages" icon-on="ion-ios7-paper" icon-off="ion-ios7-paper-outline" href="#">
+       <ion-nav-view name=""></ion-nav-view>
+       </ion-tab>
+    </ion-tabs>
     </ion-pane>
+
   </body>
 </html>
