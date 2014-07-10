@@ -36,7 +36,7 @@ angular.module('mainApp', ['ionic', 'service', 'controllers'])
     }).
     state('messages', {
       url: '/messages',
-      templateUrl: 'templates/messages.html'
+      templateUrl: 'templates/messages.html',
       controller: 'messagesCtrl'
     })
     .otherwise('/home')
