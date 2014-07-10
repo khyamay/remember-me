@@ -17,3 +17,11 @@ angular.module('mainApp', ['ionic'])
     }
   });
 })
+.config(function ($stateProvider, $urlRouterProvider){
+  $stateProvider
+    .state('home', {
+      url: '/home',
+      abstratc: true,
+      templateUrl: 'templates/home.html'
+    })
+})
