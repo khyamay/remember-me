@@ -21,18 +21,23 @@ angular.module('mainApp', ['ionic', 'service', 'controllers'])
   $stateProvider
     .state('home', {
       url: '/home',
-      templateUrl: 'templates/home.html'
+      templateUrl: 'templates/home.html',
+      controller: 'homeCtrl'
     })
     .state('notes', {
       url: '/notes', 
-        templateUrl: 'templates/notes.html'
+        templateUrl: 'templates/notes.html',
+        controller: 'notesCtrl'
     })
     .state('pictures', {
       url: '/pictures',
-      templateUrl: 'templates/pictures.html'
+      templateUrl: 'templates/pictures.html',
+      controller: 'picturesCtrl'
     }).
     state('messages', {
       url: '/messages',
       templateUrl: 'templates/messages.html'
+      controller: 'messagesCtrl'
     })
+    .otherwise('/home')
 })
