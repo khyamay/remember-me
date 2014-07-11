@@ -1,4 +1,4 @@
-angular.module('mainApp', [])
+angular.module('mainApp.controllers', [])
 	.controller('homeCtr', function(){
 
 	})
