@@ -27,31 +27,39 @@ angular.module('mainApp', ['ionic', 'mainApp.controllers'])
     .state('tabs.home', {
       url: '/home',
       views: {
-       templateUrl: 'templates/home.html',
+        'tab-home': {
+       templateUrl: 'templates/tab-home.html',
       controller: 'homeCtrl' 
+          }
         }
     })
     .state('tabs.notes', {
       url: '/notes',
       views: {
-        templateUrl: 'templates/notes.html',
+        'tab-note': {
+        templateUrl: 'templates/tab-notes.html',
         controller: 'notesCtrl'
+        }
       } 
         
     })
     .state('tabs.pictures', {
       url: '/pictures',
       views: {
-        templateUrl: 'templates/pictures.html',
+        'tab-pictures': {
+        templateUrl: 'templates/tab-pictures.html',
         controller: 'picturesCtrl'  
+        }
       }
       
     }).
     state('tabs.messages', {
       url: '/messages',
       views : {
-      templateUrl: 'templates/messages.html',
-      controller: 'messagesCtrl'   
+        'tab-messages': {
+      templateUrl: 'templates/tab-messages.html',
+      controller: 'messagesCtrl' 
+        }  
       }
     });
     $urlRouterProvider.otherwise('/tab/home');
