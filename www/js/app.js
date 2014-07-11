@@ -22,7 +22,7 @@ angular.module('mainApp', ['ionic', 'mainApp.controllers'])
     .state('tabs', {
       url: '/tab',
       abstract: true,
-      templateUrl: 'tabs.html'
+      templateUrl: 'templates/tabs.html'
     })
     .state('tabs.home', {
       url: '/home',
