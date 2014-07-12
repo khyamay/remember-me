@@ -8,6 +8,6 @@ angular.module('mainApp.controllers', [])
 	.controller('picturesCtrl', function($scope){
 
 	})
-	.controller('messagesCtrl', function($scope){
-		
+	.controller('messagesCtrl', function($scope, Messages){
+		$scope.messages = Messages.all();
 	})
