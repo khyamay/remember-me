@@ -1,9 +1,13 @@
       <ion-view title="Motivational Message">
         <ion-content>
-          <div class="card">
-  					<div class="item item-text-wrap">
-    					This is a basic Card which contains an item that has wrapping text.
-					  </div>
-				</div>
+        	<ion-list>
+        		<ion-item ng-repeat="message in messages" type="item-text-wrap">
+        			<div class="card">
+  						<div class="item item-text-wrap">
+    					{{message.message}} By {{message.name}}
+					  	</div>
+					</div>
+        		</ion-item>
+       		 </ion-list>
           </ion-content>
         </ion-view>
