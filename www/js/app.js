@@ -36,7 +36,7 @@ angular.module('mainApp', ['ionic', 'mainApp.controllers'])
     .state('tab.notes', {
       url: '/notes',
       views: {
-        'tab-note': {
+        'tab-notes': {
         templateUrl: 'templates/tab-notes.html',
         controller: 'notesCtrl'
         }
