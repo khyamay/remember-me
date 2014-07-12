@@ -4,7 +4,8 @@
         		<ion-item ng-repeat="message in messages" type="item-text-wrap">
         			<div class="card">
   						<div class="item item-text-wrap">
-    					{{message.message}} By {{message.name}}
+    					{{message.message}}
+    					<br/>- <b>{{message.by}}</b>
 					  	</div>
 					</div>
         		</ion-item>
