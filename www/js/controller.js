@@ -1,13 +1,13 @@
 angular.module('mainApp.controllers', [])
-	.controller('homeCtr', function(){
+	.controller('homeCtr', function($scope){
 
 	})
-	.controller('notesCtrl', function(){
+	.controller('notesCtrl', function($scope){
 
 	})
-	.controller('picturesCtrl', function(){
+	.controller('picturesCtrl', function($scope){
 
 	})
-	.controller('messagesCtrl', function(){
+	.controller('messagesCtrl', function($scope){
 		
 	})

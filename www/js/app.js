@@ -17,14 +17,14 @@ angular.module('mainApp', ['ionic', 'mainApp.controllers'])
     }
   });
 })
-.config(function ($stateProvider, $urlRouterProvider){
+.config(function($stateProvider, $urlRouterProvider){
   $stateProvider
-    .state('tabs', {
+    .state('tab', {
       url: '/tab',
       abstract: true,
       templateUrl: 'templates/tabs.html'
     })
-    .state('tabs.home', {
+    .state('tab.home', {
       url: '/home',
       views: {
         'tab-home': {
@@ -33,7 +33,7 @@ angular.module('mainApp', ['ionic', 'mainApp.controllers'])
           }
         }
     })
-    .state('tabs.notes', {
+    .state('tab.notes', {
       url: '/notes',
       views: {
         'tab-note': {
@@ -43,7 +43,7 @@ angular.module('mainApp', ['ionic', 'mainApp.controllers'])
       } 
         
     })
-    .state('tabs.pictures', {
+    .state('tab.pictures', {
       url: '/pictures',
       views: {
         'tab-pictures': {
@@ -53,7 +53,7 @@ angular.module('mainApp', ['ionic', 'mainApp.controllers'])
       }
       
     }).
-    state('tabs.messages', {
+    state('tab.messages', {
       url: '/messages',
       views : {
         'tab-messages': {
