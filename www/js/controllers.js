@@ -3,9 +3,13 @@ angular.module('mainApp.controllers', [])
 
 	})
 	.controller('notesCtrl', function($scope, $ionicModal, $ionicActionSheet){
-		$ionicModal.fromTemplateUrl('newNotes.html', function (modal){
+		$ionicModal.fromTemplateUrl('templates/newNotes.html', function (modal){
 			$scope.settingsModal = modal; 
 		});
+
+		$scope.newNotes = function (){
+			$scope.settingsModal.show();
+		}
 	})
 	.controller('picturesCtrl', function($scope){
 
