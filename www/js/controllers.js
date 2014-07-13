@@ -1,6 +1,8 @@
 angular.module('mainApp.controllers', [])
-	.controller('homeCtrl', function($scope){
-
+	.controller('homeCtrl', function($scope, $ionicModal, $ionicActionSheet){
+		$ionicModal.fromTempalteUrl('newTask.html', function (){
+			$scope.settingsModal = modal; 
+		});
 	})
 	.controller('notesCtrl', function($scope){
 
