@@ -3,7 +3,7 @@ angular.module('mainApp.controllers', [])
 
 	})
 	.controller('notesCtrl', function($scope, $ionicModal, $ionicActionSheet){
-		$ionicModal.fromTempalteUrl('newNotes.html', function (modal){
+		$ionicModal.fromTemplateUrl('newNotes.html', function (modal){
 			$scope.settingsModal = modal; 
 		});
 	})

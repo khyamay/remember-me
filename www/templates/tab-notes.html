@@ -1,5 +1,9 @@
-      <ion-view title="My Notes">
-        <ion-content>
+<!--       <ion-view title="My Notes">
+ -->      <ion-header-bar class="bar-positive">
+          <button class="button button-clear" ng-click="newTask()">New Notes</button>
+          <h1 class="title">New Notes</h1>
+        </ion-header-bar>
+        <ion-content has-tabs="true" on-refresh="onRefresh()">
           <div class="card">
   					<div class="item item-text-wrap">
     					This is notes
