@@ -1,11 +1,12 @@
 
       <ion-view title="My Notes">
- 
+       <ion-nav-buttons side="left">
+            <button class="button button-clear" ng-click="newNotes()">
+           New
+            </button>
+          </ion-nav-buttons>
         <ion-content>
-     <ion-header-bar class="bar-positive">
-          <button class="button button-clear" ng-click="newNotes()">New</button>
-          <h1 class="title">Tasks</h1>
-        </ion-header-bar>
+   
           <div class="card">
   					<div class="item item-text-wrap">
     					This is notes
