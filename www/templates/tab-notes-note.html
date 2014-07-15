@@ -1,10 +1,5 @@
 
       <ion-view title="My Notes">
-       <ion-nav-buttons side="left">
-            <button class="button button-clear" ng-click="newNotes()">
-           New
-            </button>
-          </ion-nav-buttons>
         <ion-content>
          <ion-list>
             <ion-item ng-repeat="note in notes" type="item-text-wrap">
@@ -13,8 +8,8 @@
               {{note.title}}
             </div>
             <div class="item item-text-wrap">
-            <!-- as note.id params using stateparams -->
-            {{note.post | limitTo: 140}} <a href="#/tab/notes/note/{{note.id}}"> More..</a>
+          
+            {{note.post | limitTo: 140}} <a href="#/tab/notes/{{note.id}}"> More..</a>
             </div>
             </ion-item>
            </ion-list>

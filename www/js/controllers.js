@@ -18,6 +18,8 @@ angular.module('mainApp.controllers', [])
     		{ id: 3, title: "Some kind of failure always occurs before success", post: " Most mistakes are unavoidable.  Learn to forgive yourself.  It’s not a problem to make them.  It’s only a problem if you never learn from them. If you’re too afraid of failure, you can’t possibly do what needs to be done to be successful.  The solution to this problem is making friends with failure.  You want to know the difference between a master and a beginner?  The master has failed more times than the beginner has even tried.  Behind every great piece of art is a thousand failed attempts to make it, but these attempts are simply never shown to us. Bottom line:  Just because it’s not happening now, doesn’t mean it never will.  Sometimes things have to go very wrong before they can be right." }
   ];
 
+  		$scope.id = $stateParams.noteId;
+  		
 	})
 	.controller('picturesCtrl', function($scope){
 
