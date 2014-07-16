@@ -43,10 +43,14 @@ angular.module('mainApp', ['ionic', 'mainApp.controllers', 'mainApp.services'])
       } 
         
     })
-    .state('tab.notes.note',{
+    .state('tab.notes-note',{
       url: '/note/:noteId',
-      templateUrl: 'templates/tab-notes-note.html',
-      controller: 'notesCtrl'
+      views: {
+        'tab-notes': {
+          templateUrl: 'templates/notes-note.html',
+          controller: 'noteCtrl'
+        }
+      }     
     })
     .state('tab.pictures', {
       url: '/pictures',
