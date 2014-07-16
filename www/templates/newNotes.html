@@ -5,15 +5,17 @@
 	<button class="button button-clear button-primary" ng-click="close()">Close</button>
 	</header>
 	<ion-content class="padding has-header">
+	<form ng-submit="createPost(post)">
 		<div class="list">
-  <label class="item item-input">
-    <input type="text" placeholder="Title">
-  </label>
-  <br/>
-  <label class="item item-input">
-    <textarea placeholder="Notes...."></textarea>
-  </label>
-  <button class="button-positive button-block button">Post</button>
-</div>
+		  <label class="item item-input">
+		    <input type="text" placeholder="Title" ng-model="note.title">
+		  </label>
+		  <br/>
+		  <label class="item item-input">
+		    <textarea placeholder="Notes...." ng-model="note.post"></textarea>
+		  </label>
+		  <button type="submit" class="button-positive button-block button">Post</button>
+		</div>
+	</form>
 	</ion-content>
 	</div>
