@@ -1,1 +1,9 @@
 /* Empty. Add your own CSS if you like */
+a { 
+	text-decoration: none;
+}
+.margin {
+	position: relative;
+	margin-left: 9px;
+	margin-right: 9px;
+}

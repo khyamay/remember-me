@@ -13,8 +13,12 @@
               {{note.title}}
             </div>
             <div class="item item-text-wrap">
-            <!-- as note.id params using stateparams -->
-            {{note.post | limitTo: 140}} <a href="#/tab/note/{{note.id}}"> More..</a>
+            
+            {{note.post | limitTo: 140}} <a href="#/tab/note/{{note.id}}">
+        <!-- make the icon on the right -->
+             <br/>More..</a>
+            <i class="ion-checkmark-circled icon-actions margin" ng-click=""></i>
+            <i class="ion-trash-b icon-actions margin" ng-click=""></i>
             </div>
             </ion-item>
            </ion-list>
