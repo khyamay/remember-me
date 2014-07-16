@@ -65,4 +65,20 @@ angular.module('mainApp.services', [])
   				return notes[noteId];
   			}
   		}
+	})
+	.factory('LocalStorage', function ($window){
+		return {
+			set: function (key, value){
+				$window.LocalStorage[key] = value;
+			},
+			get: function(key, defaultValue){
+				return $window.LocalStorage[key] || defaultValue;
+			},
+			setObject: function (key, value){
+				$window.LocalStorage[key] = JSON.stringify(value);
+			},
+			getObject: function(key){
+				return JSON.parse($window.LocalStorage[key] || '{}');
+			}
+		}
 	});
