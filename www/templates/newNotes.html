@@ -1,15 +1,15 @@
 <div id="task-view" class="modal slide-in-up" ng-controller="newNotesCtrl">
 <header class="bar bar-header bar-positive">
 	<h1 class="title">New Notes</h1>
-	<button class="button button-clear button-primary" ng-click="close()">Done</button>
 	<button class="button button-clear button-primary" ng-click="close()">Close</button>
 	</header>
 	<ion-content class="padding has-header">
-	<form ng-submit="createPost(post)">
+	<form ng-submit="createNote(note)">
 		<div class="list">
 		  <label class="item item-input">
 		    <input type="text" placeholder="Title" ng-model="note.title">
 		  </label>
+		  <!-- add required on the input -->
 		  <br/>
 		  <label class="item item-input">
 		    <textarea placeholder="Notes...." ng-model="note.post"></textarea>

@@ -81,4 +81,21 @@ angular.module('mainApp.services', [])
 				return JSON.parse($window.LocalStorage[key] || '{}');
 			}
 		}
-	});
+	})
+	.service('Form', function (){
+		var notes = [];
+
+		var addNotes = function (note){
+			notes.push(note);
+		}
+
+		var getNotes = function (){
+			return notes;
+		}
+
+		
+		return {
+			addNotes: addNotes,
+			getNotes: getNotes
+		}
+	})
