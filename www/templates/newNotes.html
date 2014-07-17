@@ -4,7 +4,7 @@
 	<button class="button button-clear button-primary" ng-click="close()">Close</button>
 	</header>
 	<ion-content class="padding has-header">
-	<form ng-submit="createNote(note)">
+	<form ng-submit="createNote(note)" name="addForm" ng-controller="newNotesCtrl">
 		<div class="list">
 		  <label class="item item-input">
 		    <input type="text" placeholder="Title" ng-model="note.title">

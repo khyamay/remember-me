@@ -13,6 +13,7 @@ angular.module('mainApp.controllers', [])
 
 		$scope.notes = Notes.all();
 		$scope.notes = Form.getNotes();
+		console.log($scope.notes);
 	
 		
   		$scope.close = function() {
@@ -38,6 +39,7 @@ angular.module('mainApp.controllers', [])
 		}
 
 		$scope.createNote = function(note){
+
 			var note = {
 				title: note.title,
 				post: note.post
@@ -45,7 +47,8 @@ angular.module('mainApp.controllers', [])
 			Form.addNotes(note);
 			console.log(note);
 			$scope.modal.hide();
-			
+			$scope.addForm.$setPristine();
+			$scope.note = {};
 		};
 		
 	})

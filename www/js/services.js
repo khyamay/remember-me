@@ -87,6 +87,7 @@ angular.module('mainApp.services', [])
 
 		var addNotes = function (note){
 			notes.push(note);
+	
 		}
 
 		var getNotes = function (){
