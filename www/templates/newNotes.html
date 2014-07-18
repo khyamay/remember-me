@@ -7,14 +7,13 @@
 	<form ng-submit="createNote(note)" name="addForm" ng-controller="newNotesCtrl">
 		<div class="list">
 		  <label class="item item-input">
-		    <input type="text" placeholder="Title" ng-model="note.title">
+		    <input type="text" placeholder="Title" ng-model="note.title" required>
 		  </label>
-		  <!-- add required on the input -->
 		  <br/>
 		  <label class="item item-input">
-		    <textarea placeholder="Notes...." ng-model="note.post"></textarea>
+		    <textarea placeholder="Notes...." ng-model="note.post" required></textarea>
 		  </label>
-		  <button type="submit" class="button-positive button-block button">Post</button>
+		  <button type="submit" class="button-positive button-block button" ng-disabled="addForm.$invalid">Post</button>
 		</div>
 	</form>
 	</ion-content>
