@@ -14,11 +14,12 @@
             </div>
             <div class="item item-text-wrap">
             
-            {{note.post | limitTo: 140}} <a href="#/tab/note/{{note.id}}">
-        <!-- make the icon on the right -->
-             <br/>More..</a>
-            <i class="ion-checkmark-circled icon-actions margin" ng-click=""></i>
-            <i class="ion-trash-b icon-actions margin" ng-click=""></i>
+            {{note.post | limitTo: 140}} 
+           <div class="row"><div class="col col-75"><a class="side" href="#/tab/note/{{note.id}}">
+             More..</a></div>
+              <div class="col"><i class="ion-checkmark-circled icon-actions" ng-click=""></i>
+            <i class="ion-trash-b icon-actions margin" ng-click=""></i></div>
+            </div>
             </div>
             </ion-item>
            </ion-list>
