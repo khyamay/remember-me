@@ -26,7 +26,8 @@ angular.module('mainApp.controllers', [])
   		});
 
 	})
-	.controller('picturesCtrl', function($scope, Notes){
+	.controller('picturesCtrl', function($scope, Pictures){
+		$scope.pictures = Pictures.all();
 
 	})
 	.controller('messagesCtrl', function($scope, Messages){
