@@ -68,7 +68,7 @@ angular.module('mainApp.services', [])
 	})
 	.factory('Pictures', function (){
 			var pictures = [
-	    		{ id: 0, src: "https://placeimg.com/230/230/arch" },
+	    		{ id: 0, src: "https://placeimg.com/230/230/nature" },
 	    		{ id: 1, src: "https://placeimg.com/230/230/arch" },
 	    		{ id: 2, src: "https://placeimg.com/230/230/people" },
 	    		{ id: 3, src: "https://placeimg.com/230/230/tech" }

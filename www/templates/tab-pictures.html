@@ -1,9 +1,17 @@
       <ion-view title="My Favorite Pictures">
         <ion-content>
-          <div class="card">
-  					<div class="item item-text-wrap">
-    					this is pictures
+        <ion-list>
+            <ion-item ng-repeat="picture in pictures" type="item-text-wrap">
+          <div class="list card">
+				<div class="item item-image">
+				<div class="row">
+				<div class="col">
+				  <img ng-src="{{picture.src}}">
+					</div>
+					</div>			
 					  </div>
 				</div>
+				</ion-item>
+				</ion-list>
           </ion-content>
         </ion-view>
