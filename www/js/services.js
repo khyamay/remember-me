@@ -66,6 +66,23 @@ angular.module('mainApp.services', [])
   			}
   		}
 	})
+	.factory('Pictures', function (){
+			var pictures = [
+	    		{ id: 0, src: "https://placeimg.com/230/230/arch" },
+	    		{ id: 1, src: "https://placeimg.com/230/230/arch" },
+	    		{ id: 2, src: "https://placeimg.com/230/230/people" },
+	    		{ id: 3, src: "https://placeimg.com/230/230/tech" }
+	  		];
+
+	  		return {
+	  			all: function (){
+	  				return pictures;
+	  			},
+	  			get: function(pictureId){
+	  				return pictures[pictureId];
+	  			}
+	  		}
+		})
 	.factory('LocalStorage', function ($window){
 		return {
 			set: function (key, value){
