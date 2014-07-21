@@ -2,7 +2,7 @@ angular.module('mainApp.controllers', [])
 	.controller('homeCtrl', function($scope){
 		
 	})
-	.controller('notesCtrl', function ($rootScope, $scope, $ionicModal, Form, $firebase, $window){
+	.controller('notesCtrl', function ($rootScope, $scope, $ionicModal, Form, $firebase, $timeout){
 		
 		//initializing empty notes
 		$scope.notes = [];
@@ -12,17 +12,17 @@ angular.module('mainApp.controllers', [])
 
 		//using on listener for value event using snapshot of firebase
 		notesList.on('value', function(snapshot){
-			var note = snapshot.val();
-
-			$scope.notes = [];
-
-			for (var key in note){
-				if (note.hasOwnProperty(key)){
-					note[key].key = key;
-					$scope.notes.push(note[key]);
-				}
-			}
-		})
+			$timeout(function(){
+				var note = snapshot.val();
+				$scope.notes = [];
+				for (var key in note){
+					if (note.hasOwnProperty(key)){
+						note[key].key = key;
+						$scope.notes.push(note[key]);
+					}
+				}	
+			});
+		});
 
 		// $scope.notes = Form.getNotes();
 		// console.log($scope.notes);
