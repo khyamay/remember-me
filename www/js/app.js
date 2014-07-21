@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.services'])
 
-.run(function($ionicPlatform, $firebase) {
+.run(function($ionicPlatform, $rootScope, $firebase) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
