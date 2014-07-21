@@ -24,8 +24,6 @@ angular.module('mainApp.controllers', [])
 			});
 		});
 
-		// $scope.notes = Form.getNotes();
-		// console.log($scope.notes);
 	
 		//this is used for calling newNotes.html when users clikck on newNote button
 		$ionicModal.fromTemplateUrl('templates/newNotes.html', function(modal){
@@ -37,11 +35,7 @@ angular.module('mainApp.controllers', [])
 			$scope.modal.show();
 		};
 
-		//for closing the modal
-  		$scope.close = function() {
-    	$scope.modal.hide();
-  		};
-
+	
   		//Cleanup the modal when we're done with it!
   		$scope.$on('$destroy', function() {
     	$scope.modal.remove();
@@ -57,10 +51,12 @@ angular.module('mainApp.controllers', [])
 	})
 	.controller('newNotesCtrl', function($rootScope, $scope, $ionicModal, Form, $firebase){
 
+		//for closing the modal
 		$scope.close = function (modal){
 			$scope.modal.hide();
 		}
 
+		//creating notes
 		$scope.createNote = function(note){
 
 			var note = {
@@ -69,9 +65,11 @@ angular.module('mainApp.controllers', [])
 				created: Date.now(),
 				updated: Date.now()
 			}
+			
 			var notesList = new Firebase('https://remember-me.firebaseio.com/');
+			
+			//adding note into firebase 
 			$firebase(notesList).$add(note);
-			// Form.addNotes(note);
 			console.log(note);
 			$scope.modal.hide();
 			$scope.addForm.$setPristine();
