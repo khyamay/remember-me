@@ -24,6 +24,12 @@ angular.module('mainApp.controllers', [])
 			});
 		});
 
+		$scope.deleteNote = function (key){
+			var notesList = new Firebase('https://remember-me.firebaseio.com/');
+			notesList.child(key).remove();
+			console.log('deleted');
+		};
+
 	
 		//this is used for calling newNotes.html when users clikck on newNote button
 		$ionicModal.fromTemplateUrl('templates/newNotes.html', function(modal){
