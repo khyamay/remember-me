@@ -3,7 +3,6 @@ angular.module('mainApp.controllers', [])
 		
 	})
 	.controller('notesCtrl', function ($rootScope, $scope, $ionicModal, Form, $firebase, $timeout){
-		
 		//initializing empty notes
 		$scope.notes = [];
 
@@ -21,18 +20,15 @@ angular.module('mainApp.controllers', [])
 						note[key].key = key;
 						$scope.notes.push(note[key]);
 					}
-				}	
-				
+				}
 				if ($scope.notes.length == 0){
-					$rootScope.noNotes = true;
-						} else {
-							$rootScope.noNotes = false;
-						}
+				$scope.noNotes = true;
+					} else {
+						$scope.noNotes = false;
+						}	
 			});
 
-
-
-
+			
 		});
 
 
