@@ -8,17 +8,19 @@ angular.module('mainApp.controllers', [])
 
 		
 		//creating new instance of Firebase using base url
-		var notesList = new Firebase('https://remember-me.firebaseio.com/');
+		var notesList = new Firebase('https://remember-me.firebaseio.com/notes');
 
 		//using on listener for value event using snapshot of firebase
 		notesList.on('value', function(snapshot){
 			$timeout(function(){
 				var note = snapshot.val();
+				console.log(snapshot.name());
 				$scope.notes = [];
 				for (var key in note){
 					if (note.hasOwnProperty(key)){
 						note[key].key = key;
 						$scope.notes.push(note[key]);
+
 					}
 				}
 				if ($scope.notes.length == 0){
@@ -33,7 +35,7 @@ angular.module('mainApp.controllers', [])
 
 
 		$scope.deleteNote = function (key){
-			var notesList = new Firebase('https://remember-me.firebaseio.com/');
+			var notesList = new Firebase('https://remember-me.firebaseio.com/notes');
 			notesList.child(key).remove();
 			console.log('deleted');
 		};
@@ -80,7 +82,7 @@ angular.module('mainApp.controllers', [])
 				updated: Date.now()
 			}
 			
-			var notesList = new Firebase('https://remember-me.firebaseio.com/');
+			var notesList = new Firebase('https://remember-me.firebaseio.com/notes');
 			
 			//adding note into firebase 
 			$firebase(notesList).$add(note);
