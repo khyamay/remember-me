@@ -6,6 +6,7 @@ angular.module('mainApp.controllers', [])
 		
 		//initializing empty notes
 		$scope.notes = [];
+
 		
 		//creating new instance of Firebase using base url
 		var notesList = new Firebase('https://remember-me.firebaseio.com/');
@@ -21,8 +22,19 @@ angular.module('mainApp.controllers', [])
 						$scope.notes.push(note[key]);
 					}
 				}	
+				
+				if ($scope.notes.length == 0){
+					$rootScope.noNotes = true;
+						} else {
+							$rootScope.noNotes = false;
+						}
 			});
+
+
+
+
 		});
+
 
 		$scope.deleteNote = function (key){
 			var notesList = new Firebase('https://remember-me.firebaseio.com/');

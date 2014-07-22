@@ -20,8 +20,17 @@
               <div class="col"><i class="ion-checkmark-circled icon-actions" ng-click=""></i>
             <i class="ion-trash-b icon-actions margin" ng-click="deleteNote('{{note.key}}')"></i></div>
             </div>
+            
             </div>
             </ion-item>
            </ion-list>
+
+           <div class="card" ng-show="noNotes">
+             <div class="item item-text-wrap">
+              <span>
+                No Items in your Fav Notes. Why do you create new note!!!
+              </span>
+             </div>
+           </div>
           </ion-content>
         </ion-view>
