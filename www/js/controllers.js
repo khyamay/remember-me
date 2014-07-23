@@ -15,7 +15,6 @@ angular.module('mainApp.controllers', [])
 			var note = snapshot.val();
 			$scope.notes = [];
 			$timeout(function(){	
-				console.log(snapshot.name());
 				for (var key in note){
 					if (note.hasOwnProperty(key)){
 						note[key].key = key;
@@ -95,17 +94,21 @@ angular.module('mainApp.controllers', [])
 	})
 	.controller('noteCtrl', function ($scope, $stateParams, $firebase, $timeout){
 		var notesList = new Firebase('https://remember-me.firebaseio.com/notes');
-			//using on listener for value event using snapshot of firebase
-			
+		
+		//using on listener for value event using snapshot of firebase
 		notesList.on('value', function(snapshot){
 			var note = snapshot.val();
+			var id = $stateParams.noteId
 			$timeout(function(){	
 				for (var key in note){
 					if (note.hasOwnProperty(key)){
 						note[key].key = key;
-						$scope.note = note[key];
+						$scope.note = note[id];	
 					}
 				}
 			});
+	
 		});
+		
+
 	})
