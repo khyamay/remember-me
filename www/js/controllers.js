@@ -21,7 +21,7 @@ angular.module('mainApp.controllers', [])
 						note[key].key = key;
 						$scope.notes.push(note[key]);
 					}
-					if (note === 0){
+					if (note === null){
 				$scope.noNotes = true;
 					} else {
 						$scope.noNotes = false;
@@ -96,6 +96,7 @@ angular.module('mainApp.controllers', [])
 	.controller('noteCtrl', function ($scope, $stateParams, $firebase, $timeout){
 		var notesList = new Firebase('https://remember-me.firebaseio.com/notes');
 			//using on listener for value event using snapshot of firebase
+			
 		notesList.on('value', function(snapshot){
 			var note = snapshot.val();
 			$timeout(function(){	
