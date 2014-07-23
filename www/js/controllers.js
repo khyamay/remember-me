@@ -100,6 +100,8 @@ angular.module('mainApp.controllers', [])
 			var note = snapshot.val();
 			var id = $stateParams.noteId
 			$timeout(function(){	
+				
+				//itirating over the list of not
 				for (var key in note){
 					if (note.hasOwnProperty(key)){
 						note[key].key = key;
