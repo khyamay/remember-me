@@ -15,8 +15,9 @@
             <div class="item item-text-wrap">
             <!-- add another span for edited on date -->
             <span>Posted on: {{note.created | date: format}}</span><br>
+            <span ng-show="upDate">Update on: {{note.updated | date: format}}</span><br>
             {{note.post | limitTo: 140}} 
-           <div class="row"><div class="col col-75"><a class="side" href="#/tab/note/{{note.id}}">
+           <div class="row"><div class="col col-75"><a class="side" href="#/tab/notes/{{note.key}}">
              More..</a></div>
               <div class="col"><i class="ion-edit icon-actions" ng-click=""></i>
             <i class="ion-android-trash icon-actions margin" ng-click="deleteNote('{{note.key}}')"></i></div>
@@ -26,13 +27,12 @@
             </ion-item>
            </ion-list>
 
-          
-          </ion-content>
-           <div class="card" ng-show="noNotes">
+          <div ng-show="noNotes">
              <div class="item item-text-wrap">
               <span>
                 No Items in your Fav Notes. Why do you create new note!!!
               </span>
              </div>
            </div>
+          </ion-content>
         </ion-view>

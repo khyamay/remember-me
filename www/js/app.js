@@ -46,7 +46,7 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
         
     })
     .state('tab.notes-note',{
-      url: '/note/:noteId',
+      url: '/notes/:noteId',
       views: {
         'tab-notes': {
           templateUrl: 'templates/notes-note.html',
