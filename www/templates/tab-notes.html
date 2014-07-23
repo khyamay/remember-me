@@ -15,7 +15,7 @@
             <div class="item item-text-wrap">
             <!-- add another span for edited on date -->
             <span>Posted on: {{note.created | date: format}}</span><br>
-            <span ng-show="upDate">Update on: {{note.updated | date: format}}</span><br>
+            <span ng-show="upDate">Updated on: {{note.updated | date: format}}</span><br>
             {{note.post | limitTo: 140}} 
            <div class="row"><div class="col col-75"><a class="side" href="#/tab/notes/{{note.key}}">
              More..</a></div>

@@ -7,6 +7,10 @@
             <div class="item item-divider item-text-wrap">
               {{note.title}}
             </div>
+            <div class="item">
+            <span>Posted on: {{note.created | date: format}}</span>
+            <span ng-show="upDate">Updated on: {{note.updated | date: format}}</span>
+            </div>
             <div class="item item-text-wrap">
           
             {{note.post}} 
