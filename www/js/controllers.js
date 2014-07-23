@@ -21,7 +21,7 @@ angular.module('mainApp.controllers', [])
 						note[key].key = key;
 						$scope.notes.push(note[key]);
 					}
-					if ($scope.notes.length == 0){
+					if (note === 0){
 				$scope.noNotes = true;
 					} else {
 						$scope.noNotes = false;
@@ -98,7 +98,6 @@ angular.module('mainApp.controllers', [])
 			//using on listener for value event using snapshot of firebase
 		notesList.on('value', function(snapshot){
 			var note = snapshot.val();
-			$scope.notes = [];
 			$timeout(function(){	
 				for (var key in note){
 					if (note.hasOwnProperty(key)){
