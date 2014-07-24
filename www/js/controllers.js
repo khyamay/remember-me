@@ -2,12 +2,12 @@ angular.module('mainApp.controllers', [])
 	.controller('homeCtrl', function($scope){
 		
 	})
-	.controller('notesCtrl', function ($rootScope, $scope, $ionicModal, $firebase, $timeout){
+	.controller('notesCtrl', function ($rootScope, $scope, $ionicModal, $firebase, $timeout, FIREBASE_URL){
 		//initializing empty notes
 		$scope.notes = [];
 
 		//creating new instance of Firebase using base url
-		var notesList = new Firebase('https://remember-me.firebaseio.com/notes');
+		var notesList = new Firebase(FIREBASE_URL);
 
 		//using on listener for value event using snapshot of firebase
 		notesList.on('value', function(snapshot){
@@ -33,7 +33,7 @@ angular.module('mainApp.controllers', [])
 
 
 		$scope.deleteNote = function (key){
-			var notesList = new Firebase('https://remember-me.firebaseio.com/notes');
+			var notesList = new Firebase(FIREBASE_URL);
 			notesList.child(key).remove();
 			console.log('deleted');
 		};
@@ -94,7 +94,7 @@ angular.module('mainApp.controllers', [])
 				updated: Date.now()
 			}
 			
-			var notesList = new Firebase('https://remember-me.firebaseio.com/notes');
+			var notesList = new Firebase(FIREBASE_URL);
 			
 			//adding note into firebase 
 			$firebase(notesList).$add(note);
@@ -106,7 +106,7 @@ angular.module('mainApp.controllers', [])
 		
 	})
 	.controller('noteCtrl', function ($scope, $stateParams, $firebase, $timeout){
-		var notesList = new Firebase('https://remember-me.firebaseio.com/notes');
+		var notesList = new Firebase(FIREBASE_URL);
 		
 		//using on listener for value event using snapshot of firebase
 		notesList.on('value', function(snapshot){

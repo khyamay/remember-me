@@ -16,7 +16,7 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
       StatusBar.styleDefault();
     }
 
-    $rootScope.baseUrl = 'https://remember-me.firebaseio.com/';
+    // $rootScope.baseUrl = 'https://remember-me.firebaseio.com/';
   });
 })
 .config(function($stateProvider, $urlRouterProvider){
@@ -75,3 +75,4 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
     });
     $urlRouterProvider.otherwise('/tab/home');
 })
+  .constant('FIREBASE_URL','https://remember-me.firebaseio.com/notes');
