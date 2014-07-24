@@ -1,4 +1,9 @@
       <ion-view title="My Favorite Pictures">
+      <ion-nav-buttons side="left">
+            <button class="button button-clear" ng-click="newNotes()">
+           Upload
+            </button>
+          </ion-nav-buttons>
         <ion-content>
         <ion-list>
             <ion-item ng-repeat="picture in pictures" type="item-text-wrap">
