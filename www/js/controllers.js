@@ -64,8 +64,11 @@ angular.module('mainApp.controllers', [])
   		});
 
 	})
-	.controller('updateNotesCtrl', function(){
-		
+	.controller('updateNotesCtrl', function($scope){
+		//for closing the modal
+		$scope.close = function (modal){
+			$scope.modal.hide();
+		}
 	})
 	.controller('picturesCtrl', function($scope, Pictures){
 		$scope.pictures = Pictures.all();
