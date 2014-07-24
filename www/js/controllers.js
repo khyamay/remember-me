@@ -39,8 +39,13 @@ angular.module('mainApp.controllers', [])
 		};
 
 	
-		//this is used for calling newNotes.html when users clikck on newNote button
+		//this is used for calling newNotes.html when users click on newNote button
 		$ionicModal.fromTemplateUrl('templates/newNotes.html', function(modal){
+			$scope.modal = modal;
+		});
+
+		//for calling updateNotes.html when users clikc on update post icon
+		$ionicModal.fromTemplateUrl('tempaltes/updateNotes.html', function(modal){
 			$scope.modal = modal;
 		});
 
