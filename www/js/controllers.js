@@ -44,10 +44,13 @@ angular.module('mainApp.controllers', [])
 			$scope.modal = modal;
 		});
 
-		//for calling updateNotes.html when users clikc on update post icon
-		$ionicModal.fromTemplateUrl('tempaltes/updateNotes.html', function(modal){
-			$scope.modal = modal;
+		$ionicModal.fromTemplateUrl('templates/updateNotes.html', function(modal){
+			$scope.updatemodal = modal;
 		});
+
+		$scope.updateNotes = function(){
+			$scope.updatemodal.show();
+		}
 
 		//opens new newNews.html page 
 		$scope.newNotes = function (){
@@ -60,6 +63,9 @@ angular.module('mainApp.controllers', [])
     	$scope.modal.remove();
   		});
 
+	})
+	.controller('updateNotesCtrl', function(){
+		
 	})
 	.controller('picturesCtrl', function($scope, Pictures){
 		$scope.pictures = Pictures.all();
