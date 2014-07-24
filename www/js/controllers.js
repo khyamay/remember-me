@@ -2,11 +2,10 @@ angular.module('mainApp.controllers', [])
 	.controller('homeCtrl', function($scope){
 		
 	})
-	.controller('notesCtrl', function ($rootScope, $scope, $ionicModal, Form, $firebase, $timeout){
+	.controller('notesCtrl', function ($rootScope, $scope, $ionicModal, $firebase, $timeout){
 		//initializing empty notes
 		$scope.notes = [];
 
-		
 		//creating new instance of Firebase using base url
 		var notesList = new Firebase('https://remember-me.firebaseio.com/notes');
 
@@ -100,7 +99,7 @@ angular.module('mainApp.controllers', [])
 			var note = snapshot.val();
 			var id = $stateParams.noteId
 			$timeout(function(){	
-				
+
 				//itirating over the list of not
 				for (var key in note){
 					if (note.hasOwnProperty(key)){
