@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.services'])
 
-.run(function($ionicPlatform, $rootScope, $firebase) {
+.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -16,7 +16,6 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
       StatusBar.styleDefault();
     }
 
-    // $rootScope.baseUrl = 'https://remember-me.firebaseio.com/';
   });
 })
 .config(function($stateProvider, $urlRouterProvider){
