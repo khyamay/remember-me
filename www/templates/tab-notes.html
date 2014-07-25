@@ -19,7 +19,7 @@
             {{note.post | limitTo: 140}} 
            <div class="row"><div class="col col-75"><a class="side" href="#/tab/notes/{{note.key}}">
              More..</a></div>
-              <div class="col"><i class="ion-edit icon-actions" ng-click="updateNotes(note.key)"></i>
+              <div class="col"><i class="ion-edit icon-actions" ng-click="updateNotes()"></i>
             <i class="ion-android-trash icon-actions margin" ng-click="deleteNote('{{note.key}}')"></i></div>
             </div>
             
