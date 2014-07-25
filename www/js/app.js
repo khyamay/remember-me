@@ -61,9 +61,17 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
         controller: 'picturesCtrl'  
         }
       }
-      
-    }).
-    state('tab.messages', {
+    })
+    .state('tab.update-note', {
+      url: '/edit/:noteId',
+      views: {
+        'tab-notes':{
+          tamplateUrl: 'templates/update-note.html',
+          controller: 'updateNoteCtrl'
+        }
+      }
+    })
+    .state('tab.messages', {
       url: '/messages',
       views : {
         'tab-messages': {
