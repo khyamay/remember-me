@@ -1,10 +1,10 @@
-<div id="task-view" class="modal slide-in-up" ng-controller="updateNotesCtrl">
+<!-- <div id="task-view" class="modal slide-in-up" ng-controller="updateNotesCtrl">
 <header class="bar bar-header bar-positive">
 	<h1 class="title">Update Notes</h1>
 	<button class="button button-clear button-primary" ng-click="close()">Close</button>
-	</header>
+	</header> -->
 	<ion-content class="padding has-header">
-	<form ng-submit="updateNote(note)" name="addForm" ng-controller="updateNotesCtrl">
+	<form ng-submit="updateNote()" name="addForm" ng-controller="updateNotesCtrl">
 		<div class="list">
 		  <label class="item item-input">
 		    <input type="text" placeholder="Title" ng-model="note.title" required>
@@ -17,4 +17,4 @@
 		</div>
 	</form>
 	</ion-content>
-	</div>
+	<!-- </div> -->
