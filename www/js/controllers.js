@@ -27,11 +27,9 @@ angular.module('mainApp.controllers', [])
 				}
 				
 			});
-
-			
 		});
 
-
+		//for deleting the post
 		$scope.deleteNote = function (key){
 			var notesList = new Firebase(FIREBASE_URL);
 			notesList.child(key).remove();
@@ -48,9 +46,11 @@ angular.module('mainApp.controllers', [])
 			$scope.updatemodal = modal;
 		});
 
+
 		$scope.updateNotes = function(){
 			$scope.updatemodal.show();
 		}
+
 
 		//opens new newNews.html page 
 		$scope.newNotes = function (){
@@ -77,7 +77,7 @@ angular.module('mainApp.controllers', [])
 	.controller('messagesCtrl', function($scope, Messages){
 		$scope.messages = Messages.all();
 	})
-	.controller('newNotesCtrl', function($rootScope, $scope, $ionicModal, Form, $firebase){
+	.controller('newNotesCtrl', function($rootScope, $scope, $ionicModal, $firebase, FIREBASE_URL){
 
 		//for closing the modal
 		$scope.close = function (modal){
@@ -105,7 +105,7 @@ angular.module('mainApp.controllers', [])
 		};
 		
 	})
-	.controller('noteCtrl', function ($scope, $stateParams, $firebase, $timeout){
+	.controller('noteCtrl', function ($scope, $stateParams, $firebase, $timeout, FIREBASE_URL){
 		var notesList = new Firebase(FIREBASE_URL);
 		
 		//using on listener for value event using snapshot of firebase
