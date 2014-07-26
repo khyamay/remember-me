@@ -13,7 +13,10 @@
 		  <label class="item item-input">
 		    <textarea rows="12" placeholder="Notes...." ng-model="note.post" required></textarea>
 		  </label>
-		  <button type="submit" class="button-positive button-block button" ng-disabled="addForm.$invalid">Post<i class="ion-paper-airplane margin"></i></button>
+		  <div class="row">
+		  <button type="submit" class="button-positive button-block button col col-33" ng-disabled="addForm.$invalid">Post<i class="ion-paper-airplane margin"></i></button>
+		   <button type="reset" class="button-positive button-block button col-33 col-offset-33">Reset</button>
+		   </div>
 		</div>
 	</form>
 	</ion-content>
