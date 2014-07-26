@@ -67,7 +67,6 @@ angular.module('mainApp.controllers', [])
 	.controller('updateNotesCtrl', function($scope, $stateParams, $firebase, FIREBASE_URL, $timeout){
 		var noteId = $stateParams.noteId;
 		var note = new Firebase(FIREBASE_URL + noteId); 
-		// $scope.note = $firebase(note);
 		
 		var notesList = new Firebase(FIREBASE_URL);
 		notesList.on('value', function(snapshot){
@@ -79,7 +78,6 @@ angular.module('mainApp.controllers', [])
 					if (note.hasOwnProperty(key)){
 						note[key].key = key;
 						$scope.note = note[id];	
-						console.log($scope.note);
 					}
 				}
 			});
