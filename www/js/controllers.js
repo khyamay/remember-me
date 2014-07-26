@@ -65,25 +65,25 @@ angular.module('mainApp.controllers', [])
 
 	})
 	.controller('updateNotesCtrl', function($scope, $stateParams, $firebase, FIREBASE_URL, $timeout){
-		// var noteId = $stateParams.noteId;
-		// var notesList = new Firebase(FIREBASE_URL);
-		var noteURL = FIREBASE_URL + $stateParams.noteId;
-		$scope.note = $firebase(new Firebase(noteURL));
+		var noteId = $stateParams.noteId;
+		var note = new Firebase(FIREBASE_URL + noteId); 
+		// $scope.note = $firebase(note);
 		
-		console.log($scope.note);
-		// notesList.on('value', function(snapshot){
-		// var note = snapshot.val();
-		// 	var id = $stateParams.noteId
-		// 		$timeout(function(){	
-		// 		//itirating over the list of not
-		// 		for (var key in note){
-		// 			if (note.hasOwnProperty(key)){
-		// 				note[key].key = key;
-		// 				$scope.note = note[id];	
-		// 			}
-		// 		}
-		// 	});
-		// });
+		var notesList = new Firebase(FIREBASE_URL);
+		notesList.on('value', function(snapshot){
+		var note = snapshot.val();
+			var id = $stateParams.noteId
+				$timeout(function(){	
+				//itirating over the list of not
+				for (var key in note){
+					if (note.hasOwnProperty(key)){
+						note[key].key = key;
+						$scope.note = note[id];	
+						console.log($scope.note);
+					}
+				}
+			});
+		});
 
 		//for closing the modal
 		// $scope.close = function (modal){
