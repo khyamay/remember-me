@@ -62,11 +62,11 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
         }
       }
     })
-    .state('tab.update-notes', {
+    .state('tab.notes-update', {
       url: '/notes/edit/:noteId',
       views: {
         'tab-notes':{
-          tamplateUrl: 'templates/update-notes.html',
+          templateUrl: 'templates/notes-update.html',
           controller: 'updateNotesCtrl'
         }
       }
