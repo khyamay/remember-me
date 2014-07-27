@@ -64,9 +64,9 @@ angular.module('mainApp.controllers', [])
   		});
 
 	})
-	.controller('updateNotesCtrl', function($scope, $stateParams, $firebase, FIREBASE_URL, $timeout){
+	.controller('updateNotesCtrl', function($scope, $location, $stateParams, $firebase, FIREBASE_URL, $timeout){
 		var noteId = $stateParams.noteId;
-		var note = new Firebase(FIREBASE_URL + noteId); 
+		// var note = new Firebase(FIREBASE_URL + noteId); 
 		
 		var notesList = new Firebase(FIREBASE_URL);
 		notesList.on('value', function(snapshot){
@@ -87,6 +87,19 @@ angular.module('mainApp.controllers', [])
 		// $scope.close = function (modal){
 		// 	$scope.modal.hide();
 		// }
+
+		$scope.updateNote = function(){
+			
+			// var note = {
+			// 	title: note.title,
+			// 	post: note.post,
+			// 	created: Date.now(),
+			// 	updated: Date.now()}
+
+			// $firebase(notesList).$update(note);
+			// $location.path('#/');
+		}
+
 	})
 	.controller('picturesCtrl', function($scope, Pictures){
 		$scope.pictures = Pictures.all();
@@ -140,8 +153,7 @@ angular.module('mainApp.controllers', [])
 					}
 				}
 			});
-	
 		});
-		
+
 
 	})
