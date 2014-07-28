@@ -83,11 +83,6 @@ angular.module('mainApp.controllers', [])
 			});
 		});
 
-		//for closing the modal
-		// $scope.close = function (modal){
-		// 	$scope.modal.hide();
-		// }
-
 		$scope.updateNote = function(){
 			
 			// var note = {
