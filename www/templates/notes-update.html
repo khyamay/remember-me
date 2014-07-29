@@ -20,7 +20,7 @@
 	</div> -->
 	<ion-view title="Update">
         <ion-content has-header="true" class="padding">
-         <form ng-submit="updateNote()" name="addForm" ng-controller="updateNotesCtrl">
+         <form ng-submit="updateNote(note)" name="addForm" ng-controller="updateNotesCtrl">
 		<div class="list">
 		  <label class="item item-input">
 		    <input type="text" placeholder="Title" ng-model="note.title" required>
