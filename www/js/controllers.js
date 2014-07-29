@@ -5,6 +5,8 @@ angular.module('mainApp.controllers', [])
 	.controller('notesCtrl', function($rootScope, $scope, $ionicModal, $firebase, $timeout, FIREBASE_URL){
 		//initializing empty notes
 		$scope.notes = [];
+		$rootScope.currDate = true;
+		$rootScope.upDate = false;
 
 		//creating new instance of Firebase using base url
 		var notesList = new Firebase(FIREBASE_URL);
@@ -64,7 +66,7 @@ angular.module('mainApp.controllers', [])
   		});
 
 	})
-	.controller('updateNotesCtrl', function($scope, $state, $stateParams, $firebase, FIREBASE_URL, $timeout){
+	.controller('updateNotesCtrl', function($rootScope, $scope, $state, $stateParams, $firebase, FIREBASE_URL, $timeout){
 		var noteId = FIREBASE_URL + $stateParams.noteId;
 		// $scope.note = $firebase(new Firebase(note)); 
 		
@@ -86,7 +88,7 @@ angular.module('mainApp.controllers', [])
 		
 		
 		$scope.updateNote = function(note){
-			var id = $stateParams.noteId;
+		var id = $stateParams.noteId;
 		var noteUrl = FIREBASE_URL + '/' + id; 
 		var updateList = new Firebase(FIREBASE_URL);
 		$scope.note = $firebase(new Firebase(noteUrl));
@@ -113,6 +115,10 @@ angular.module('mainApp.controllers', [])
 			// });
 			
 			//using updated date on the old notes
+
+			$rootScope.upDate = true;
+			$rootScope.currDate = false;
+
 			$scope.note.$update({
 				title: note.title,
 				post: note.post,
@@ -120,7 +126,7 @@ angular.module('mainApp.controllers', [])
 				updated: Date.now()
 			});
 
-			    $state.go('tab.notes');
+			 $state.go('tab.notes');
 
 			
 		}

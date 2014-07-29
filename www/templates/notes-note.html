@@ -8,7 +8,7 @@
               {{note.title}}
             </div>
             <div class="item">
-            <span>Posted on: {{note.created | date: format}}</span>
+            <spanng ng-show="currDate">Posted on: {{note.created | date: format}}</span>
             <span ng-show="upDate">Updated on: {{note.updated | date: format}}</span>
             </div>
             <div class="item item-text-wrap">
