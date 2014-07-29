@@ -65,8 +65,8 @@ angular.module('mainApp.controllers', [])
 
 	})
 	.controller('updateNotesCtrl', function($scope, $location, $stateParams, $firebase, FIREBASE_URL, $timeout){
-		var noteId = $stateParams.noteId;
-		// var note = new Firebase(FIREBASE_URL + noteId); 
+		var noteId = FIREBASE_URL + $stateParams.noteId;
+		// $scope.note = $firebase(new Firebase(note)); 
 		
 		var notesList = new Firebase(FIREBASE_URL);
 		notesList.on('value', function(snapshot){
@@ -83,16 +83,43 @@ angular.module('mainApp.controllers', [])
 			});
 		});
 
-		$scope.updateNote = function(){
-			
-			// var note = {
-			// 	title: note.title,
-			// 	post: note.post,
-			// 	created: Date.now(),
-			// 	updated: Date.now()}
+		
+		
+		$scope.updateNote = function(note){
+			var id = $stateParams.noteId;
+		var noteUrl = FIREBASE_URL + '/' + id; 
+		var updateList = new Firebase(FIREBASE_URL);
+		$scope.note = $firebase(new Firebase(noteUrl));
+		console.log(id)
+		
+			// updateList.on('child_added', function(snapshot){
+			// 	var oldnote = snapshot.val();
+			// 	var title = oldnote.title,
+			// 		post = oldnote.post,
+			// 		dated = oldnote.date,
+			// 		updated = oldnote.update
+			// 	console.log(oldnote);
 
-			// $firebase(notesList).$update(note);
-			// $location.path('#/');
+			// 	// var newnote = {
+			// 	// title: note.title,
+			// 	// post: note.post,
+			// 	// created: Date.now(),
+			// 	// updated: Date.now()
+			// 	// }
+				
+			// $firebase(updateList).$update(newnote);
+			// $location.path('#/tab/notes');
+			// console.log($scope.note);
+			// });
+			
+			//using updated date on the old notes
+			$scope.note.$update({
+				title: note.title,
+				post: note.post,
+				created: Date.now(),
+				updated: Date.now()
+			});
+			
 		}
 
 	})
