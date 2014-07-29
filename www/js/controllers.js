@@ -64,7 +64,7 @@ angular.module('mainApp.controllers', [])
   		});
 
 	})
-	.controller('updateNotesCtrl', function($scope, $location, $stateParams, $firebase, FIREBASE_URL, $timeout){
+	.controller('updateNotesCtrl', function($scope, $state, $stateParams, $firebase, FIREBASE_URL, $timeout){
 		var noteId = FIREBASE_URL + $stateParams.noteId;
 		// $scope.note = $firebase(new Firebase(note)); 
 		
@@ -119,6 +119,9 @@ angular.module('mainApp.controllers', [])
 				created: Date.now(),
 				updated: Date.now()
 			});
+
+			    $state.go('tab.notes');
+
 			
 		}
 
