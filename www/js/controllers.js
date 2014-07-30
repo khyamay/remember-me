@@ -103,9 +103,26 @@ angular.module('mainApp.controllers', [])
 		}
 
 	})
-	.controller('picturesCtrl', function($scope, Pictures){
+	.controller('picturesCtrl', function($scope, Pictures, $ionicModal){
 		$scope.pictures = Pictures.all();
+		
+		
+		//for calling uploading page
+		$ionicModal.fromTemplateUrl('templates/upload.html', function(modal){
+			$scope.modal = modal;
+		});
 
+		$scope.upload = function(){
+			$scope.modal.show();
+		}
+	
+
+	})
+	.controller('uploadCtrl', function($scope, $ionicModal){
+			//for closing the modal
+		$scope.close = function (modal){
+			$scope.modal.hide();
+		}
 	})
 	.controller('messagesCtrl', function($scope, Messages){
 		$scope.messages = Messages.all();
