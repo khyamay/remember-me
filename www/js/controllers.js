@@ -120,10 +120,28 @@ angular.module('mainApp.controllers', [])
 			//for closing the modal
 		$scope.close = function (modal){
 			$scope.modal.hide();
-		}
+		};
+
+		
+
 	})
-	.controller('messagesCtrl', function($scope, Messages){
-		$scope.messages = Messages.all();
+	.controller('messagesCtrl', function($scope, MFB_URL, $timeout){
+		// $scope.messages = Messages.all();
+		$scope.messages = [];
+		var messageList = new Firebase(MFB_URL)
+		messageList.on('value', function(snapshot){
+		var message = snapshot.val();
+				$timeout(function(){	
+				//itirating over the list of not
+				for (var key in message){
+					if (message.hasOwnProperty(key)){
+						message[key].key = key;
+						$scope.messages.push(message[key]); 
+					}
+				}
+			});
+		});
+
 	})
 	.controller('newNotesCtrl', function($rootScope, $scope, $ionicModal, $firebase, FIREBASE_URL){
 
@@ -166,7 +184,7 @@ angular.module('mainApp.controllers', [])
 				for (var key in note){
 					if (note.hasOwnProperty(key)){
 						note[key].key = key;
-						$scope.note = note[id];	
+						$scope.messages.push = note[id];	
 					}
 				}
 			});
