@@ -6,6 +6,13 @@
             </button>
           </ion-nav-buttons>
         <ion-content>
+        <div ng-show="noNotes" class="card">
+          <div class="item item-text-wrap">
+              <span>
+                No Items in your Fav Notes. Why don't you create new note!!!
+              </span>
+             </div>
+           </div>
          <ion-list>
             <ion-item ng-repeat="note in notes track by $index" type="item-text-wrap">
           <div class="card">
@@ -23,14 +30,7 @@
             
             </div>
             </ion-item>
+  
            </ion-list>
-
-          <div ng-show="noNotes">
-             <div class="item item-text-wrap">
-              <span>
-                No Items in your Fav Notes. Why do you create new note!!!
-              </span>
-             </div>
-           </div>
           </ion-content>
         </ion-view>
