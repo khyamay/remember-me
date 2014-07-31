@@ -93,7 +93,7 @@ angular.module('mainApp.controllers', [])
 			$scope.note.$update({
 				title: note.title,
 				post: note.post,
-				created: noteUrl + '/' + created,
+				created: Date.now(),
 				updated: Date.now()
 			});
 
