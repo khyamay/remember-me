@@ -6,7 +6,7 @@ angular.module('mainApp.controllers', [])
 		//initializing empty notes
 		
 		$scope.notes = [];
-
+		$scope.noNotes = true;
 		//creating new instance of Firebase using base url
 		var notesList = new Firebase(FIREBASE_URL);
 
@@ -20,11 +20,8 @@ angular.module('mainApp.controllers', [])
 						note[key].key = key;
 						$scope.notes.push(note[key]);
 					}
-					if (note === null){
-				$scope.noNotes = true;
-					} else {
-						$scope.noNotes = false;
-						}	
+					
+					$scope.noNotes = false;
 				}
 				
 			});
@@ -35,6 +32,7 @@ angular.module('mainApp.controllers', [])
 			var notesList = new Firebase(FIREBASE_URL);
 			notesList.child(key).remove();
 			console.log('deleted');
+			$scope.noNotes = true;
 		};
 
 	
