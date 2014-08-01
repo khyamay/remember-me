@@ -171,11 +171,11 @@ angular.module('mainApp.controllers', [])
 			var id = $stateParams.noteId
 			$timeout(function(){	
 
-				//itirating over the list of not
+				//itirating over the list of notes
 				for (var key in note){
 					if (note.hasOwnProperty(key)){
 						note[key].key = key;
-						$scope.messages.push = note[id];	
+						$scope.note = note[id];	
 					}
 				}
 			});
