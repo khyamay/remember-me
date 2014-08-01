@@ -41,15 +41,6 @@ angular.module('mainApp.controllers', [])
 			$scope.modal = modal;
 		});
 
-		// $ionicModal.fromTemplateUrl('templates/update-notes.html', function(modal){
-		// 	$scope.updatemodal = modal;
-		// });
-
-
-		// $scope.updateNotes = function(){
-		// 	$scope.updatemodal.show();
-		// }
-
 
 		//opens new newNews.html page 
 		$scope.newNotes = function (){
