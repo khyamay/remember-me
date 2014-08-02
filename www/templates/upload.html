@@ -4,14 +4,14 @@
 	<button class="button button-clear button-primary" ng-click="close()">Close</button>
 	</header>
 	<ion-content class="padding has-header">
-	<form ng-submit="postImg(img)" name="addImage" ng-controller="uploadCtrl">
+	<form ng-submit="postImg(image)" name="addImage" ng-controller="uploadCtrl">
 		<div class="list">
 		  <label class="item item-input">
-		    <input type="file" accept="image/*" capture="camera" id="file-upload" ng-model="img.title" required>
+		    <input image-upload type="file" accept="image/*" capture="camera" id="file-upload" name="image" required>
 		  </label>
 		  <br/>
 		  <div class="row">
-		  <button type="submit" class="button-positive button-block button col col-33" ng-disabled="addImage.$invalid">Upload<i class="ion-paper-airplane margin"></i></button>
+		  <button type="submit" class="button-positive button-block button col col-33">Upload<i class="ion-paper-airplane margin"></i></button>
 		   <button type="reset" class="button-positive button-block button col-33 col-offset-33">Reset</button>
 		   </div>
 		</div>
