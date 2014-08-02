@@ -107,12 +107,23 @@ angular.module('mainApp.controllers', [])
 	
 
 	})
-	.controller('uploadCtrl', function($scope, $ionicModal){
+	.controller('uploadCtrl', function($scope, $log, $ionicModal, $firebase, IFB_URL){
 			//for closing the modal
 		$scope.close = function (modal){
 			$scope.modal.hide();
 		};
 
+		
+
+		$scope.postImg = function (image){
+			
+			var imageList = new Firebase(IFB_URL);
+				
+			// $firebase(imageList).$add(image);
+			imageList.childname(safename).set(image);
+			console.log(image.data);
+			console.log(image);
+			};
 		
 
 	})
