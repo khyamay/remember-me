@@ -1,0 +1,22 @@
+      <ion-view title="My Favorite Pictures">
+      <ion-nav-buttons side="left">
+            <button class="button button-clear" ng-click="upload()">
+           Upload
+            </button>
+          </ion-nav-buttons>
+        <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="picture in pictures" type="item-text-wrap">
+          <div class="card">
+				<div class="item item-image">
+				<div class="row">
+				<div class="col">
+				  <img ng-src="{{picture.src}}">
+					</div>
+					</div>			
+					  </div>
+				</div>
+				</ion-item>
+				</ion-list>
+          </ion-content>
+        </ion-view>

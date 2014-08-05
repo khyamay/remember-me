@@ -1,0 +1,36 @@
+
+      <ion-view title="My Notes">
+       <ion-nav-buttons side="left">
+            <button class="button button-clear" ng-click="newNotes()">
+           <i class="ion-android-add margin"></i>New
+            </button>
+          </ion-nav-buttons>
+        <ion-content>
+        <div ng-show="noNotes" class="card">
+          <div class="item item-text-wrap">
+              <span>
+                No Items in your Fav Notes. Why don't you create new note!!!
+              </span>
+             </div>
+           </div>
+         <ion-list>
+            <ion-item ng-repeat="note in notes track by $index" type="item-text-wrap">
+          <div class="card">
+            <div class="item item-divider">
+              {{note.title}}
+            </div>
+            <div class="item item-text-wrap">
+            <span>Posted on: {{note.created | date: format}}</span><br><br>
+            {{note.post | limitTo: 140}} 
+           <div class="row"><div class="col col-75"><a class="side" href="#/tab/notes/{{note.key}}">
+             More..</a></div>
+              <div class="col"><a class="ion-edit icon-actions" href="#/tab/notes/edit/{{note.key}}"></a>
+            <i class="ion-android-trash icon-actions margin" ng-click="deleteNote('{{note.key}}')"></i></div>
+            </div>
+            
+            </div>
+            </ion-item>
+  
+           </ion-list>
+          </ion-content>
+        </ion-view>
