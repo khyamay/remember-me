@@ -25,15 +25,15 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
       abstract: true,
       templateUrl: 'templates/tabs.html'
     })
-    .state('tab.home', {
-      url: '/home',
-      views: {
-        'tab-home': {
-       templateUrl: 'templates/tab-home.html',
-      controller: 'homeCtrl' 
-          }
-        }
-    })
+    // .state('tab.home', {
+    //   url: '/home',
+    //   views: {
+    //     'tab-home': {
+    //    templateUrl: 'templates/tab-home.html',
+    //   controller: 'homeCtrl' 
+    //       }
+    //     }
+    // })
     .state('tab.notes', {
       url: '/notes',
       views: {
@@ -80,7 +80,7 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
         }  
       }
     });
-    $urlRouterProvider.otherwise('/tab/home');
+    $urlRouterProvider.otherwise('/tab/notes');
 })
   .constant('FIREBASE_URL','https://remember-me.firebaseio.com/notes')
   .constant('MFB_URL', 'https://remember-me.firebaseio.com/messages')
