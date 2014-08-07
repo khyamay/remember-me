@@ -46,9 +46,6 @@
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/img/ionic.png \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/js/app.js \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/js/controllers.js \
-/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/js/message.json \
-/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/js/notes.json \
-/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/js/server.js \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/js/services.js \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/lib/ionic \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/lib/ionic/css \
@@ -119,9 +116,15 @@
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/lib/ionic/scss/ionicons/_ionicons-variables.scss \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/lib/ionic/scss/ionicons/ionicons.scss \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/plugins/com.ionic.keyboard \
+/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/plugins/org.apache.cordova.camera \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/plugins/org.apache.cordova.device \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/plugins/com.ionic.keyboard/www \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/plugins/com.ionic.keyboard/www/keyboard.js \
+/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/plugins/org.apache.cordova.camera/www \
+/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/Camera.js \
+/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/CameraConstants.js \
+/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/CameraPopoverHandle.js \
+/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/CameraPopoverOptions.js \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/plugins/org.apache.cordova.device/www \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/plugins/org.apache.cordova.device/www/device.js \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/templates/newNotes.html \

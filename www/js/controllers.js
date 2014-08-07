@@ -115,16 +115,63 @@ angular.module('mainApp.controllers', [])
 
 		
 
-		$scope.postImg = function (image){
+		// $scope.postImg = function (image){
 			
-			var imageList = new Firebase(IFB_URL);
+		// 	var imageList = new Firebase(IFB_URL);
 				
-			// $firebase(imageList).$add(image);
-			imageList.childname(safename).set(image);
-			console.log(image.data);
-			console.log(image);
-			};
+		// 	// $firebase(imageList).$add(image);
+		// 	imageList.childname(safename).set(image);
+		// 	console.log(image.data);
+		// 	console.log(image);
+		// 	};
 		
+		// $scope.data = {"ImageURI" : "Select Image"};
+
+		// function UploadPicture(ImageURI){
+		// 	$scope.data.ImageURI = ImageURI;
+		// 	alert($scope.data.ImageURI);
+		// }
+
+
+
+		$scope.PhotoLibrary = function (){
+			$scope.image = document.getElementById('myImage');
+			if (navigator.camera){
+				 navigator.camera.getPicture( cameraSuccess, cameraError,
+                     { 	quality: 50,
+                     	sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
+                     	destinationType: navigator.camera.DestinationType.FILE_URI
+						}
+
+                       );
+				} else {
+					alert('camera not found');
+				}
+		};
+
+		 function cameraSuccess(imageURI) {
+		    // hack until cordova 3.5.0 is released
+		    if (imageURI.substring(0,21)=="content://com.android") {
+		      var photo_split=imageURI.split("%3A");
+		      imageURI="content://media/external/images/media/"+photo_split[1];
+		    }
+		    $scope.image.src = imageURI;
+		  }
+		  function cameraError(message) {
+		    alert('Failed because: ' + message);
+  		}
+
+
+		// $scope.ShowPictures = function(){
+  //           navigator.camera.getPicture(UploadPicture, function(message) {
+  //                   alert('get picture failed');
+  //                   },{
+  //                   quality: 50,
+  //                   destinationType: navigator.camera.DestinationType.FILE_URI,
+  //                   sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+  //               }
+  //           );
+  //       };
 
 	})
 	.controller('messagesCtrl', function($scope, MFB_URL, $timeout){

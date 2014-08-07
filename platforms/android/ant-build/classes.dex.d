@@ -6,4 +6,7 @@
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/ant-build/classes/com/ionicframework/starter/R$xml.class \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/ant-build/classes/com/ionicframework/starter/R.class \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/ant-build/classes/com/ionicframework/starter/RememberMe.class \
+/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/ant-build/classes/org/apache/cordova/camera/CameraLauncher.class \
+/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/ant-build/classes/org/apache/cordova/camera/ExifHelper.class \
+/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/ant-build/classes/org/apache/cordova/camera/FileHelper.class \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/ant-build/dexedLibs/classes-5be5d5dc4b38042f77d4f287022a82b3.jar \

@@ -4,7 +4,7 @@
 	<button class="button button-clear button-primary" ng-click="close()">Close</button>
 	</header>
 	<ion-content class="padding has-header">
-	<form ng-submit="postImg(image)" name="addImage" ng-controller="uploadCtrl">
+<!-- 	<form ng-submit="postImg(image)" name="addImage" ng-controller="uploadCtrl">
 		<div class="list">
 		  <label class="item item-input">
 		    <input image-upload type="file" accept="image/*" capture="camera" id="file-upload" name="image" required>
@@ -15,6 +15,13 @@
 		   <button type="reset" class="button-positive button-block button col-33 col-offset-33">Reset</button>
 		   </div>
 		</div>
-	</form>
+	</form> -->
+
+	<button ng-click="PhotoLibrary()">Select Pictures</button>
+<!-- 	<img ng-src="data.ImageURI" id="smallimage">
+ -->	
+ 	<!-- <input type="text" ng-model="ImageURI" size="30" />
+	<img id="smallimage" size="30" /> -->
+	<img src="#" id="myImage"/>
 	</ion-content>
 	</div>
