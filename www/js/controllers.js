@@ -135,11 +135,11 @@ angular.module('mainApp.controllers', [])
 
 
 		$scope.PhotoLibrary = function (){
-			$scope.image = document.getElementById('myImage');
+			$scope.image = document.getElementById('smallimage');
 			if (navigator.camera){
-				 navigator.camera.getPicture( cameraSuccess, cameraError,
+				 navigator.camera.getPicture( photoSuccess, photoError,
                      { 	quality: 50,
-                     	sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
+                     	sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM,
                      	destinationType: navigator.camera.DestinationType.FILE_URI
 						}
 
@@ -147,31 +147,41 @@ angular.module('mainApp.controllers', [])
 				} else {
 					alert('camera not found');
 				}
-		};
+			};
 
-		 function cameraSuccess(imageURI) {
+		 function photoSuccess(imageURI) {
 		    // hack until cordova 3.5.0 is released
 		    if (imageURI.substring(0,21)=="content://com.android") {
 		      var photo_split=imageURI.split("%3A");
 		      imageURI="content://media/external/images/media/"+photo_split[1];
 		    }
-		    $scope.image.src = imageURI;
+		    $scope.imageURI = imageURI
+		    $scope.image.src = $scope.imageURI;
+		    $scope.apply();
+
 		  }
-		  function cameraError(message) {
+
+		  function photoError(message) {
 		    alert('Failed because: ' + message);
   		}
 
 
-		// $scope.ShowPictures = function(){
-  //           navigator.camera.getPicture(UploadPicture, function(message) {
-  //                   alert('get picture failed');
-  //                   },{
-  //                   quality: 50,
-  //                   destinationType: navigator.camera.DestinationType.FILE_URI,
-  //                   sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-  //               }
-  //           );
-  //       };
+		//for uploading
+
+		$scope.UploadPicture = function() {   
+	        var myImg = $scope.imageURI;
+	        var options = new FileUploadOptions();
+	        options.fileKey="post";
+	        options.chunkedMode = false;
+	        alert('myImg');
+	        // var params = {};
+	        // params.user_token = localStorage.getItem('auth_token');
+	        // params.user_email = localStorage.getItem('email');
+	        // options.params = params;
+	        // var ft = new FileTransfer();
+	        // ft.upload(myImg, encodeURI("https://firebase.com/images/"), onUploadSuccess, onUploadFail, options);
+    }
+
 
 	})
 	.controller('messagesCtrl', function($scope, MFB_URL, $timeout){
