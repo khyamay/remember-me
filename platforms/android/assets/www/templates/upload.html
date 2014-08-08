@@ -17,11 +17,20 @@
 		</div>
 	</form> -->
 
-	<button ng-click="PhotoLibrary()">Select Pictures</button>
+	<button class="button-positive button-block button" ng-click="PhotoLibrary()">Select Picture <i class="ion-android-image"></i></button>
 <!-- 	<img ng-src="data.ImageURI" id="smallimage">
  -->	
- 	<!-- <input type="text" ng-model="ImageURI" size="30" />
-	<img id="smallimage" size="30" /> -->
-	<img src="#" id="myImage"/>
+<!--  	<input type="text" ng-model="ImageURI" size="30" />
+ -->	 <div class="card">
+		<div class="item item-image">
+			<div class="row">
+				<div class="col">
+					<img id="smallimage" size="10" />					
+				</div>
+			</div>			
+		 </div>
+	</div>
+	<button ng-click="UploadPicture()" class="button-positive button-block button">Upload<i class="ion-paper-airplane margin"></i></button>
+	<!-- <img src="#" id="myImage"/> -->
 	</ion-content>
 	</div>

@@ -13,11 +13,11 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+                            "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -39,13 +39,13 @@
         "com.ionic.keyboard": {
             "PACKAGE_NAME": "com.ionicframework.starter"
         },
+        "org.apache.cordova.camera": {
+            "PACKAGE_NAME": "com.ionicframework.starter"
+        },
         "org.apache.cordova.console": {
             "PACKAGE_NAME": "com.ionicframework.starter"
         },
         "org.apache.cordova.device": {
-            "PACKAGE_NAME": "com.ionicframework.starter"
-        },
-        "org.apache.cordova.camera": {
             "PACKAGE_NAME": "com.ionicframework.starter"
         }
     },
