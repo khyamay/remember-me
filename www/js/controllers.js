@@ -107,7 +107,7 @@ angular.module('mainApp.controllers', [])
 	
 
 	})
-	.controller('uploadCtrl', function($scope, $log, $ionicModal, $firebase, IFB_URL){
+	.controller('uploadCtrl', function($scope, $ionicModal, $firebase, IFB_URL){
 			//for closing the modal
 		$scope.close = function (modal){
 			$scope.modal.hide();
