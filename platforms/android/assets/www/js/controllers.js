@@ -107,7 +107,7 @@ angular.module('mainApp.controllers', [])
 	
 
 	})
-	.controller('uploadCtrl', function($scope, $log, $ionicModal, $firebase, IFB_URL){
+	.controller('uploadCtrl', function($scope, $ionicModal, $firebase, IFB_URL){
 			//for closing the modal
 		$scope.close = function (modal){
 			$scope.modal.hide();
@@ -174,10 +174,6 @@ angular.module('mainApp.controllers', [])
 	        options.fileKey="post";
 	        options.chunkedMode = false;
 	        alert('myImg');
-	        // var params = {};
-	        // params.user_token = localStorage.getItem('auth_token');
-	        // params.user_email = localStorage.getItem('email');
-	        // options.params = params;
 	        // var ft = new FileTransfer();
 	        // ft.upload(myImg, encodeURI("https://firebase.com/images/"), onUploadSuccess, onUploadFail, options);
     }
