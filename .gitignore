@@ -3,6 +3,11 @@ node_modules/
 *.apk
 *.ap_
 
+# generated files - android project subfolder
+Android/bin/
+Android/gen/
+Android/assets/
+
 # Files for the Dalvik VM
 *.dex
 
