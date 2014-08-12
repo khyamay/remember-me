@@ -107,13 +107,24 @@ angular.module('mainApp.controllers', [])
 	
 
 	})
-	.controller('uploadCtrl', function($scope, $ionicModal, $firebase, IFB_URL){
+	.controller('uploadCtrl', function($scope, $ionicModal, $firebase, IFB_URL, Camera){
 			//for closing the modal
 		$scope.close = function (modal){
 			$scope.modal.hide();
 		};
 
-		
+		$scope.getPhoto = function(){
+			Camera.getPicture().then(function(imageURI){
+				$scope.currentPhoto = imageURI;
+			}, function(err){
+				console.log(err);
+			},{
+				quality: 75,
+				targetWidth:320,
+				targetHeight: 320,
+				saveToPhotoAlbum: false
+			});
+		};
 
 		// $scope.postImg = function (image){
 			
