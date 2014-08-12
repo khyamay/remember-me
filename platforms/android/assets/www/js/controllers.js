@@ -115,7 +115,11 @@ angular.module('mainApp.controllers', [])
 
 		$scope.getPhoto = function(){
 			Camera.getPicture().then(function(imageURI){
-				$scope.currentPhoto = imageURI;
+				// $scope.currentPhoto = imageURI;
+
+				$scope.imageURI = imageURI
+		    	// $scope.image.src = $scope.imageURI;
+		    	$scope.apply();
 			}, function(err){
 				console.log(err);
 			},{
@@ -166,11 +170,12 @@ angular.module('mainApp.controllers', [])
 		      var photo_split=imageURI.split("%3A");
 		      imageURI="content://media/external/images/media/"+photo_split[1];
 		    }
-		    $scope.imageURI = imageURI
+		    
+		   	$scope.imageURI = imageURI
 		    $scope.image.src = $scope.imageURI;
 		    $scope.apply();
 
-		  }
+		}
 
 		  function photoError(message) {
 		    alert('Failed because: ' + message);
