@@ -1,5 +1,5 @@
 angular.module('mainApp.services', [])
-	.factor('Camera', ['$q'], function($q){
+	.factory('Camera', ['$q', function($q){
 		return {
 			getPicture: function(options){
 				var q = $q.defer();
