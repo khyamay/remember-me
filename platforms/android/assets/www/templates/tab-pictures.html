@@ -5,13 +5,21 @@
             </button>
           </ion-nav-buttons>
         <ion-content>
+          
+<div ng-show="noImage" class="card">
+          <div class="item item-text-wrap">
+              <span>
+                No Pictures in your Fav Notes. Why don't you upload new image!!!
+              </span>
+             </div>
+           </div>
         <ion-list>
-            <ion-item ng-repeat="picture in pictures" type="item-text-wrap">
+            <ion-item ng-repeat="image in images track by $index" type="item-text-wrap">
           <div class="card">
 				<div class="item item-image">
 				<div class="row">
 				<div class="col">
-				  <img ng-src="{{picture.src}}">
+				  <img ng-src="data:image/png;base64,{{image.image}}"> 
 					</div>
 					</div>			
 					  </div>
