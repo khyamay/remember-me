@@ -140,15 +140,14 @@ angular.module('mainApp.controllers', [])
 
 
 		$scope.getPhoto = function(){
-			Camera.getPicture().then(function(imageURI){
-				$scope.imageURI = imageURI
+			$scope.image = document.getElementById('smallimage');
+
+			Camera.getPicture().then(function(imageData){
+				$scope.imageURI = "data:image/png;base64," + imageData;
+				$scope.yesPicture = true;
+				$scope.noPicture = false;
 			}, function(err){
 				console.log(err);
-			},{
-				quality: 75,
-				targetWidth:320,
-				targetHeight: 320,
-				saveToPhotoAlbum: false
 			});
 		};
 
@@ -178,7 +177,7 @@ angular.module('mainApp.controllers', [])
 		      	imageData="content://media/external/images/media/"+photo_split[1];
 		    	}
 		    
-			   	$scope.imageURI = imageData;
+			   	$scope.imageURI = "data:image/png;base64," + imageData;
 			    $scope.image.src = $scope.imageURI;
 				
 			});

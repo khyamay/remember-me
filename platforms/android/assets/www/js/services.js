@@ -3,11 +3,18 @@ angular.module('mainApp.services', [])
 		return {
 			getPicture: function(options){
 				var q = $q.defer();
-				navigator.camera.getPicture(function(result){
-					q.resolve(result);
+				navigator.camera.getPicture(function(imageData){
+					q.resolve(imageData);
 				}, function(err){
 					q.reject(err);
-				}, options);
+				}, {
+				quality: 75,
+				targetWidth:320,
+				targetHeight: 320,
+				saveToPhotoAlbum: false,
+				correctOrientation: true,
+				destinationType: Camera.DestinationType.DATA_URL
+				});
 
 				return q.promise;
 			}

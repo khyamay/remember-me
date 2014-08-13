@@ -40,7 +40,6 @@
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/plugins \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/README.md \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/templates \
-/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/try.txt \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/css/ionic.app.css \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/css/ionic.app.min.css \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/css/style.css \
