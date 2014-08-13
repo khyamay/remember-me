@@ -20,15 +20,13 @@
 	<button class="button-positive button-block button col col-33" ng-click="PhotoLibrary()">Picture <i class="ion-android-image"></i></button>
 	<button class="button-positive button-block button col col-offset-33" ng-click="getPhoto()">Camera <i class="ion-android-camera"></i></button>
 	</div>
-<!-- 	<img ng-src="data.ImageURI" id="smallimage">
- -->	
-<!--  	<input type="text" ng-model="ImageURI" size="30" />
- -->	 <div class="card">
+
+  <div class="card">
 		<div class="item item-image">
 			<div class="row">
 				<div class="col">
-					<!-- <img id="smallimage" size="10" /> -->
-					<img id="smallimage" ng-src="{{imageURI}}" size="10" />		
+					<img ng-show="yesPicture" id="smallimage" ng-src="data:image/png;base64,{{imageURI}}" size="10" />
+					<span ng-show="noPicture">No image selected!!</span>
 				</div>
 			</div>			
 		 </div>
