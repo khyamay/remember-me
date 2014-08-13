@@ -92,9 +92,9 @@ angular.module('mainApp.controllers', [])
 		}
 
 	})
-	.controller('picturesCtrl', function($scope, Pictures, $ionicModal){
-		$scope.pictures = Pictures.all();
-		
+	.controller('picturesCtrl', function($scope, Pictures, $ionicModal, $firebase, IFB_URL, $timeout){
+		// $scope.pictures = Pictures.all();
+		$scope.noImage = true;
 		
 		//for calling uploading page
 		$ionicModal.fromTemplateUrl('templates/upload.html', function(modal){
@@ -104,22 +104,44 @@ angular.module('mainApp.controllers', [])
 		$scope.upload = function(){
 			$scope.modal.show();
 		}
-	
+		
+		$scope.images = [];
+		var imageList = new Firebase(IFB_URL);
+
+		//using on listener for value event using snapshot of firebase
+		imageList.on('value', function(snapshot){
+			var image = snapshot.val();
+			$scope.images = [];
+			$timeout(function(){	
+				for (var key in image){
+					if (image.hasOwnProperty(key)){
+						image[key].key = key;
+						$scope.images.push(image[key]);
+						console.log(image[key]);
+					}
+					$scope.noImage = false;
+				}
+				
+			});
+		});
 
 	})
-	.controller('uploadCtrl', function($scope, $ionicModal, $firebase, IFB_URL, Camera, $timeout){
+	.controller('uploadCtrl', function($scope, $state, $ionicModal, $firebase, IFB_URL, Camera, $timeout){
+			$scope.yesPicture = false;
+			$scope.noPicture = true;
+
 			//for closing the modal
 		$scope.close = function (modal){
 			$scope.modal.hide();
+			$scope.noPicture = true;
+			$scope.yesPicture = false;
+
 		};
+
 
 		$scope.getPhoto = function(){
 			Camera.getPicture().then(function(imageURI){
-				// $scope.currentPhoto = imageURI;
-
 				$scope.imageURI = imageURI
-		    	// $scope.image.src = $scope.imageURI;
-		    	$scope.apply();
 			}, function(err){
 				console.log(err);
 			},{
@@ -130,24 +152,6 @@ angular.module('mainApp.controllers', [])
 			});
 		};
 
-		// $scope.postImg = function (image){
-			
-		// 	var imageList = new Firebase(IFB_URL);
-				
-		// 	// $firebase(imageList).$add(image);
-		// 	imageList.childname(safename).set(image);
-		// 	console.log(image.data);
-		// 	console.log(image);
-		// 	};
-		
-		// $scope.data = {"ImageURI" : "Select Image"};
-
-		// function UploadPicture(ImageURI){
-		// 	$scope.data.ImageURI = ImageURI;
-		// 	alert($scope.data.ImageURI);
-		// }
-
-
 
 		$scope.PhotoLibrary = function (){
 			$scope.image = document.getElementById('smallimage');
@@ -155,7 +159,8 @@ angular.module('mainApp.controllers', [])
 				 navigator.camera.getPicture( photoSuccess, photoError,
                      { 	quality: 50,
                      	sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM,
-                     	destinationType: navigator.camera.DestinationType.FILE_URI
+                     	destinationType: navigator.camera.DestinationType.DATA_URL,
+                     	correctOrientation: true
 						}
 
                        );
@@ -164,19 +169,22 @@ angular.module('mainApp.controllers', [])
 				}
 			};
 
-		 function photoSuccess(imageURI) {
+		 function photoSuccess(imageData) {
+
 		    // hack until cordova 3.5.0 is released
 		  	$timeout(function(){	
-				  if (imageURI.substring(0,21)=="content://com.android") {
-		      var photo_split=imageURI.split("%3A");
-		      imageURI="content://media/external/images/media/"+photo_split[1];
-		    }
+				if (imageData.substring(0,21)=="content://com.android") {
+		      	var photo_split=imageData.split("%3A");
+		      	imageData="content://media/external/images/media/"+photo_split[1];
+		    	}
 		    
-		   	$scope.imageURI = imageURI
-		    $scope.image.src = $scope.imageURI;
+			   	$scope.imageURI = imageData;
+			    $scope.image.src = $scope.imageURI;
 				
 			});
 
+				$scope.yesPicture = true;
+				$scope.noPicture = false;
 
 		}
 
@@ -189,12 +197,26 @@ angular.module('mainApp.controllers', [])
 
 		$scope.UploadPicture = function() {   
 	        var myImg = $scope.imageURI;
-	        var options = new FileUploadOptions();
-	        options.fileKey="post";
-	        options.chunkedMode = false;
-	        alert('myImg');
-	        // var ft = new FileTransfer();
-	        // ft.upload(myImg, encodeURI("https://firebase.com/images/"), onUploadSuccess, onUploadFail, options);
+	        var image = {
+				image: myImg,
+				created: Date.now()
+			}
+	         var imageList = new Firebase(IFB_URL);
+
+			$firebase(imageList).$add(image);
+			$scope.modal.hide();
+			$scope.yesPicture = false;
+			$scope.noPicture = true;
+    }
+
+    function onUploadSuccess(imageData){
+    	alert('succes');
+    var imageList = new Firebase(IFB_URL);
+				
+	$firebase(imageList).$add(imageData);
+    }
+    function onUploadFail(message){
+    	alert('Failed because:' + message);
     }
 
 
