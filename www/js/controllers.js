@@ -107,7 +107,7 @@ angular.module('mainApp.controllers', [])
 	
 
 	})
-	.controller('uploadCtrl', function($scope, $ionicModal, $firebase, IFB_URL, Camera){
+	.controller('uploadCtrl', function($scope, $ionicModal, $firebase, IFB_URL, Camera, $timeout){
 			//for closing the modal
 		$scope.close = function (modal){
 			$scope.modal.hide();
@@ -166,14 +166,17 @@ angular.module('mainApp.controllers', [])
 
 		 function photoSuccess(imageURI) {
 		    // hack until cordova 3.5.0 is released
-		    if (imageURI.substring(0,21)=="content://com.android") {
+		  	$timeout(function(){	
+				  if (imageURI.substring(0,21)=="content://com.android") {
 		      var photo_split=imageURI.split("%3A");
 		      imageURI="content://media/external/images/media/"+photo_split[1];
 		    }
 		    
 		   	$scope.imageURI = imageURI
 		    $scope.image.src = $scope.imageURI;
-		    $scope.apply();
+				
+			});
+
 
 		}
 
