@@ -10,3 +10,18 @@ a {
 .side{
 	margin:-10px;
 }
+
+.message-note{
+	background-color:#999999;
+	display:table-cell;
+	width:340px;
+	height:220px;
+	vertical-align: middle;
+	font-weight:bold;
+	}
+
+.message-note p {
+	color: #ffffff;
+	margin:0 10px 0 10px;
+	text-align:center;
+	}
