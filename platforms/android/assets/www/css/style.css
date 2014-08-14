@@ -9,9 +9,15 @@ a {
 	margin-right: 9px;
 }
 .side{
-	margin:-10px;
+	margin-left: -10px;
 }
-
+div.col i{
+	float:right;
+	margin-right:-5px;
+}
+div.col a.ion-edit {
+	margin-left: 15px;
+}
 .message-note{
 	background-color:#999999;
 	display:table-cell;
@@ -42,6 +48,8 @@ div.item.item-image{
 }
 .posted {
 	font-style: italic;
+	display:block;
+	padding-bottom: 12px;
 } 
 
 .col, .col a{
