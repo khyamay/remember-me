@@ -20,7 +20,7 @@
               {{note.title}}
             </div>
             <div class="item item-text-wrap">
-            <span>Posted on: {{note.created | date: format}}</span><br><br>
+            <span class="posted">Posted on: {{note.created | date: format}}</span><br><br>
             {{note.post | limitTo: 140}}.. 
            <div class="row"><div class="col col-75"><a class="side" ng-show="note.post.length > 140"href="#/tab/notes/{{note.key}}">
              More</a></div>
