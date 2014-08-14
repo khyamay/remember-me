@@ -1,15 +1,5 @@
 /* Empty. Add your own CSS if you like */
 
-/* 
-  Allow angular.js to be loaded in body, hiding cloaked elements until 
-  templates compile.  The !important is important given that there may be 
-  other selectors that are more specific or come later and might alter display.  
- */
-
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
-}
-
 a { 
 	text-decoration: none;
 }
@@ -38,5 +28,48 @@ a {
 	}
 
 .item-divider {
-	background-color: #999999 !important;
+	background-color: #2E8ED1 !important;
+	color: #fff !important;
+}
+
+.item {
+	background-color: #F2F2F2;
+	color: #000;
+}
+
+div.item.item-image{
+	background-color:#fff;
+}
+span.ng-binding {
+	font-style: italic;
+} 
+
+.col, .col a{
+	color:#04856B;
+}
+
+div.item.item-text-wrap.ng-binding, label.item.item-input, div.item{
+	background-color: #fff;
+}
+
+.qoute { 
+	font-size: 1em !important;
+	line-height: 1.5em;
+	color: #000000 !important;
+	
+}
+
+.qoute:before, .qoute:after {
+	font-size: 25px;
+}
+
+.qoute:before
+{
+	content: '\201C';
+}
+
+.qoute:after
+{
+	content: '\201D';
+	margin-left: 5px;
 }
