@@ -21,9 +21,9 @@
             </div>
             <div class="item item-text-wrap">
             <span>Posted on: {{note.created | date: format}}</span><br><br>
-            {{note.post | limitTo: 140}} 
-           <div class="row"><div class="col col-75"><a class="side" href="#/tab/notes/{{note.key}}">
-             More..</a></div>
+            {{note.post | limitTo: 140}}.. 
+           <div class="row"><div class="col col-75"><a class="side" ng-show="note.post.length > 140"href="#/tab/notes/{{note.key}}">
+             More</a></div>
               <div class="col"><a class="ion-edit icon-actions" href="#/tab/notes/edit/{{note.key}}"></a>
             <i class="ion-android-trash icon-actions margin" ng-click="deleteNote('{{note.key}}')"></i></div>
             </div>
