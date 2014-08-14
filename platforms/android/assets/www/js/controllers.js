@@ -6,7 +6,6 @@ angular.module('mainApp.controllers', [])
 		//initializing empty notes
 		
 		$scope.notes = [];
-		$scope.noNotes = true;
 		//creating new instance of Firebase using base url
 		var notesList = new Firebase(FIREBASE_URL);
 
@@ -20,10 +19,12 @@ angular.module('mainApp.controllers', [])
 						note[key].key = key;
 						$scope.notes.push(note[key]);
 					}
-					
+				}
+				if ($scope.notes == 0){
+					$scope.noNotes = true;
+				} else {
 					$scope.noNotes = false;
 				}
-				
 			});
 		});
 
@@ -94,7 +95,6 @@ angular.module('mainApp.controllers', [])
 	})
 	.controller('picturesCtrl', function($scope, Pictures, $ionicModal, $firebase, IFB_URL, $timeout){
 		// $scope.pictures = Pictures.all();
-		$scope.noImage = true;
 		
 		//for calling uploading page
 		$ionicModal.fromTemplateUrl('templates/upload.html', function(modal){
@@ -119,33 +119,33 @@ angular.module('mainApp.controllers', [])
 						$scope.images.push(image[key]);
 						console.log(image[key]);
 					}
-					$scope.noImage = false;
 				}
+
+			if ($scope.images.length == 0) {
+					$scope.noImage = true;
+						} else { 
+							$scope.noImage = false;
+						}
+
 				
 			});
 		});
 
 	})
 	.controller('uploadCtrl', function($scope, $state, $ionicModal, $firebase, IFB_URL, Camera, $timeout){
-			$scope.yesPicture = false;
-			$scope.noPicture = true;
 
 			//for closing the modal
 		$scope.close = function (modal){
 			$scope.modal.hide();
-			$scope.noPicture = true;
-			$scope.yesPicture = false;
+
+			$scope.imageURI = "";
 
 		};
 
 
 		$scope.getPhoto = function(){
-			$scope.image = document.getElementById('smallimage');
-
 			Camera.getPicture().then(function(imageData){
 				$scope.imageURI = "data:image/png;base64," + imageData;
-				$scope.yesPicture = true;
-				$scope.noPicture = false;
 			}, function(err){
 				console.log(err);
 			});
@@ -153,7 +153,6 @@ angular.module('mainApp.controllers', [])
 
 
 		$scope.PhotoLibrary = function (){
-			$scope.image = document.getElementById('smallimage');
 			if (navigator.camera){
 				 navigator.camera.getPicture( photoSuccess, photoError,
                      { 	quality: 50,
@@ -169,7 +168,7 @@ angular.module('mainApp.controllers', [])
 			};
 
 		 function photoSuccess(imageData) {
-
+			$scope.image = document.getElementById('smallimage');
 		    // hack until cordova 3.5.0 is released
 		  	$timeout(function(){	
 				if (imageData.substring(0,21)=="content://com.android") {
@@ -178,12 +177,9 @@ angular.module('mainApp.controllers', [])
 		    	}
 		    
 			   	$scope.imageURI = "data:image/png;base64," + imageData;
-			    $scope.image.src = $scope.imageURI;
-				
+			   	$scope.image.src = $scope.imageURI;
 			});
 
-				$scope.yesPicture = true;
-				$scope.noPicture = false;
 
 		}
 
@@ -204,8 +200,7 @@ angular.module('mainApp.controllers', [])
 
 			$firebase(imageList).$add(image);
 			$scope.modal.hide();
-			$scope.yesPicture = false;
-			$scope.noPicture = true;
+			$scope.imageURI = "";
     }
 
     function onUploadSuccess(imageData){

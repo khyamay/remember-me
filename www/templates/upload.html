@@ -25,8 +25,8 @@
 		<div class="item item-image">
 			<div class="row">
 				<div class="col">
-					<img ng-show="yesPicture" id="smallimage" ng-src="{{imageURI}}" size="10" />
-					<span class="message-note" ng-show="noPicture" ng-cloak><p>No image selected!!</p></span>
+					<img ng-show="imageURI" id="smallimage" ng-src="{{imageURI}}" size="10" />
+					<span class="message-note" ng-hide="imageURI"><p>No image selected!!</p></span>
 				</div>
 			</div>			
 		 </div>
