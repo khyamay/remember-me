@@ -46,13 +46,15 @@ div.col a.ion-edit {
 div.item.item-image{
 	background-color:#fff;
 }
-.posted {
+.posted, .posted-image {
 	font-style: italic;
 	display:block;
 	padding-bottom: 12px;
 } 
-
-.col, .col a{
+.posted-image {
+	font-weight: bold; 
+}
+.col, .col a, .posted, .posted-image{
 	color:#04856B;
 }
 
