@@ -22,7 +22,8 @@
 				  <img ng-src="{{image.image}}"> 
 					</div>
 					</div>	
-          <span class="posted-image">Posted on: {{image.created | date: format}}</span>		
+          <span class="posted-image">Posted on: {{image.created | date: format}}</span>	
+          <i class="ion-android-trash icon-actions margin" ng-click="deleteImage('{{image.key}}')"></i></div>	
 					  </div>
 				</div>
 				</ion-item>

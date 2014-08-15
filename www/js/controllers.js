@@ -20,7 +20,7 @@ angular.module('mainApp.controllers', [])
 						$scope.notes.push(note[key]);
 					}
 				}
-				if ($scope.notes == 0){
+				if ($scope.notes.length == 0){
 					$scope.noNotes = true;
 				} else {
 					$scope.noNotes = false;
@@ -33,7 +33,6 @@ angular.module('mainApp.controllers', [])
 			var notesList = new Firebase(FIREBASE_URL);
 			notesList.child(key).remove();
 			console.log('deleted');
-			$scope.noNotes = true;
 		};
 
 	
@@ -130,6 +129,13 @@ angular.module('mainApp.controllers', [])
 				
 			});
 		});
+
+		//deteling single picture
+		$scope.deleteImage = function (key){
+			var notesList = new Firebase(IFB_URL);
+			imageList.child(key).remove();
+			console.log('deleted');
+		};
 
 	})
 	.controller('uploadCtrl', function($scope, $state, $ionicModal, $firebase, IFB_URL, Camera, $timeout){
