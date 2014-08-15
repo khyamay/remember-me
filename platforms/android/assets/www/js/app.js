@@ -29,15 +29,6 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
       abstract: true,
       templateUrl: 'templates/tabs.html'
     })
-    // .state('tab.home', {
-    //   url: '/home',
-    //   views: {
-    //     'tab-home': {
-    //    templateUrl: 'templates/tab-home.html',
-    //   controller: 'homeCtrl' 
-    //       }
-    //     }
-    // })
     .state('tab.notes', {
       url: '/notes',
       views: {

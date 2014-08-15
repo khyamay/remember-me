@@ -11,9 +11,14 @@ a {
 .side{
 	margin-left: -10px;
 }
+
 div.col i{
 	float:right;
 	margin-right:-5px;
+}
+.ion-android-trash{
+	float:right;
+	margin-right:10px;
 }
 div.col a.ion-edit {
 	margin-left: 15px;
@@ -46,13 +51,17 @@ div.col a.ion-edit {
 div.item.item-image{
 	background-color:#fff;
 }
-.posted {
+.posted, .posted-image {
 	font-style: italic;
 	display:block;
 	padding-bottom: 12px;
 } 
-
-.col, .col a{
+.posted-image {
+	float:left;
+	margin-left:10px;
+	font-weight: bold; 
+}
+.col, .col a, .posted, .posted-image, .ion-android-trash{
 	color:#04856B;
 }
 
