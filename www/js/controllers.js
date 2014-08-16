@@ -1,6 +1,45 @@
 angular.module('mainApp.controllers', [])
-	.controller('homeCtrl', function($scope){
+	.controller('loginCtrl', function($scope, $rootScope, $firebaseSimpleLogin, $window){
 		
+	})
+	.controller('signupCtrl', function($scope, $rootScope, $firebaseSimpleLogin, $window){
+		$scope.user = {
+			email: "",
+			password: ""
+		};
+
+		$scope.addUser = function(){
+			var email = this.user.email,
+				password = this.user.password,
+				user = $scope.user;
+
+
+				if(!email || !password){
+					$rootScope.notify('invalid crendentails');
+					return false;
+				}
+				$rootScope.show('Please wait.. Registering');
+				var register = $rootScope.auth.$createUser(email, password);
+
+				register.then(function(user){
+					$rootScope.hide();
+					console.log(user);
+					$window.location.href= "#/tab/notes";
+
+				}, function(error){
+					$rootScope.hide();
+						if (error.code == 'INVALID_EMAIL'){	
+							$rootScope.notify('Invalid Email Address');
+					}
+						else if (error.code == 'EMAIL_TAKEN') {
+							$rootScope.notify('Email Address already taken');
+					}
+					else {
+						$rootScope.notify('Opps something went wrong. Please try it again later');
+					}
+					
+				});
+		}
 	})
 	.controller('notesCtrl', function($rootScope, $scope, $ionicModal, $firebase, $timeout, FIREBASE_URL){
 		//initializing empty notes
@@ -54,10 +93,10 @@ angular.module('mainApp.controllers', [])
   		});
 
 	})
-	.controller('updateNotesCtrl', function($rootScope, $scope, $state, $stateParams, $firebase, FIREBASE_URL, $timeout){
+	.controller('updateNotesCtrl', function($rootScope, $scope, $state, $stateParams, $firebase, FIREBASE_URL, $timeout, $window){
 		var noteId = FIREBASE_URL + $stateParams.noteId;
 		// $scope.note = $firebase(new Firebase(note)); 
-		
+	
 		var notesList = new Firebase(FIREBASE_URL);
 		notesList.on('value', function(snapshot){
 		var note = snapshot.val();
@@ -77,7 +116,7 @@ angular.module('mainApp.controllers', [])
 		//updating the single note
 		$scope.updateNote = function(note){
 		var id = $stateParams.noteId;
-		var noteUrl = FIREBASE_URL + '/' + id; 
+		var noteUrl = FIREBASE_URL + escapeEmailAddress($rootScope.userEmail) + '/' + id; 
 		var updateList = new Firebase(FIREBASE_URL);
 		$scope.note = $firebase(new Firebase(noteUrl));
 
@@ -92,7 +131,7 @@ angular.module('mainApp.controllers', [])
 		}
 
 	})
-	.controller('picturesCtrl', function($scope, Pictures, $ionicModal, $firebase, IFB_URL, $timeout){
+	.controller('picturesCtrl', function($scope, $rootScope, Pictures, $ionicModal, $firebase, IFB_URL, $timeout){
 		// $scope.pictures = Pictures.all();
 		
 		//for calling uploading page
@@ -138,7 +177,7 @@ angular.module('mainApp.controllers', [])
 		};
 
 	})
-	.controller('uploadCtrl', function($scope, $state, $ionicModal, $firebase, IFB_URL, Camera, $timeout){
+	.controller('uploadCtrl', function($scope, $rootScope, $state, $ionicModal, $firebase, IFB_URL, Camera, $timeout){
 
 			//for closing the modal
 		$scope.close = function (modal){
@@ -210,11 +249,12 @@ angular.module('mainApp.controllers', [])
     }
 
     function onUploadSuccess(imageData){
-    	alert('succes');
-    var imageList = new Firebase(IFB_URL);
-				
+    var imageList = new Firebase(IFB_URL);				
+	
 	$firebase(imageList).$add(imageData);
+    
     }
+
     function onUploadFail(message){
     	alert('Failed because:' + message);
     }
@@ -224,7 +264,7 @@ angular.module('mainApp.controllers', [])
 	.controller('messagesCtrl', function($scope, MFB_URL, $timeout){
 		// $scope.messages = Messages.all();
 		$scope.messages = [];
-		var messageList = new Firebase(MFB_URL)
+		var messageList = new Firebase(MFB_URL);
 		messageList.on('value', function(snapshot){
 		var message = snapshot.val();
 				$timeout(function(){	
@@ -260,14 +300,13 @@ angular.module('mainApp.controllers', [])
 			
 			//adding note into firebase 
 			$firebase(notesList).$add(note);
-			console.log(note);
 			$scope.modal.hide();
 			$scope.addForm.$setPristine();
 			$scope.note = {};
 		};
 		
 	})
-	.controller('noteCtrl', function($scope, $stateParams, $firebase, $timeout, FIREBASE_URL){
+	.controller('noteCtrl', function($scope, $rootScope, $stateParams, $firebase, $timeout, FIREBASE_URL){
 		var notesList = new Firebase(FIREBASE_URL);
 		
 		//using on listener for value event using snapshot of firebase
@@ -285,6 +324,4 @@ angular.module('mainApp.controllers', [])
 				}
 			});
 		});
-
-
-	})
+	});
