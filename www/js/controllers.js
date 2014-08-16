@@ -46,7 +46,7 @@ angular.module('mainApp.controllers', [])
 		
 		$scope.notes = [];
 		//creating new instance of Firebase using base url
-		var notesList = new Firebase(FIREBASE_URL);
+		var notesList = new Firebase(FIREBASE_URL + escapeEmailAddress($rootScope.userEmail));
 
 		//using on listener for value event using snapshot of firebase
 		notesList.on('value', function(snapshot){
@@ -69,7 +69,7 @@ angular.module('mainApp.controllers', [])
 
 		//for deleting the post
 		$scope.deleteNote = function (key){
-			var notesList = new Firebase(FIREBASE_URL);
+			var notesList = new Firebase(FIREBASE_URL + escapeEmailAddress($rootScope.userEmail));
 			notesList.child(key).remove();
 			console.log('deleted');
 		};
@@ -97,7 +97,7 @@ angular.module('mainApp.controllers', [])
 		var noteId = FIREBASE_URL + $stateParams.noteId;
 		// $scope.note = $firebase(new Firebase(note)); 
 	
-		var notesList = new Firebase(FIREBASE_URL);
+		var notesList = new Firebase(FIREBASE_URL + escapeEmailAddress($rootScope.userEmail));
 		notesList.on('value', function(snapshot){
 		var note = snapshot.val();
 			var id = $stateParams.noteId
@@ -117,7 +117,7 @@ angular.module('mainApp.controllers', [])
 		$scope.updateNote = function(note){
 		var id = $stateParams.noteId;
 		var noteUrl = FIREBASE_URL + escapeEmailAddress($rootScope.userEmail) + '/' + id; 
-		var updateList = new Firebase(FIREBASE_URL);
+		var updateList = new Firebase(FIREBASE_URL + escapeEmailAddress($rootScope.userEmail));
 		$scope.note = $firebase(new Firebase(noteUrl));
 
 			$scope.note.$update({
@@ -144,7 +144,7 @@ angular.module('mainApp.controllers', [])
 		}
 		
 		$scope.images = [];
-		var imageList = new Firebase(IFB_URL);
+		var imageList = new Firebase(IFB_URL + escapeEmailAddress($rootScope.userEmail));
 
 		//using on listener for value event using snapshot of firebase
 		imageList.on('value', function(snapshot){
@@ -241,7 +241,7 @@ angular.module('mainApp.controllers', [])
 				image: myImg,
 				created: Date.now()
 			}
-	         var imageList = new Firebase(IFB_URL);
+	         var imageList = new Firebase(IFB_URL + escapeEmailAddress($rootScope.userEmail));
 
 			$firebase(imageList).$add(image);
 			$scope.modal.hide();
@@ -249,7 +249,7 @@ angular.module('mainApp.controllers', [])
     }
 
     function onUploadSuccess(imageData){
-    var imageList = new Firebase(IFB_URL);				
+    var imageList = new Firebase(IFB_URL + escapeEmailAddress($rootScope.userEmail));				
 	
 	$firebase(imageList).$add(imageData);
     
@@ -296,7 +296,7 @@ angular.module('mainApp.controllers', [])
 				updated: Date.now()
 			}
 			
-			var notesList = new Firebase(FIREBASE_URL);
+			var notesList = new Firebase(FIREBASE_URL + escapeEmailAddress($rootScope.userEmail));
 			
 			//adding note into firebase 
 			$firebase(notesList).$add(note);
@@ -307,7 +307,7 @@ angular.module('mainApp.controllers', [])
 		
 	})
 	.controller('noteCtrl', function($scope, $rootScope, $stateParams, $firebase, $timeout, FIREBASE_URL){
-		var notesList = new Firebase(FIREBASE_URL);
+		var notesList = new Firebase(FIREBASE_URL + escapeEmailAddress($rootScope.userEmail));
 		
 		//using on listener for value event using snapshot of firebase
 		notesList.on('value', function(snapshot){
@@ -325,3 +325,11 @@ angular.module('mainApp.controllers', [])
 			});
 		});
 	});
+
+//Since Firebase does not allow '.' hence replacing '.' with ',' 
+	function escapeEmailAddress(email){
+			if (!email) return false
+				email = email.toLowerCase();
+				email = email.replace(/\./g, ',');
+				return email.trim();
+		}
