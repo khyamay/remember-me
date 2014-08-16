@@ -147,7 +147,7 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
         }
       }
     })
-    $urlRouterProvider.otherwise('/login/signup');
+    $urlRouterProvider.otherwise('/login/signin');
 })
   .constant('FIREBASE_URL','https://remember-me.firebaseio.com/notes')
   .constant('MFB_URL', 'https://remember-me.firebaseio.com/messages')

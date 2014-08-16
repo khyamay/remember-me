@@ -1,6 +1,6 @@
 angular.module('mainApp.controllers', [])
 	.controller('loginCtrl', function($scope, $rootScope, $firebaseSimpleLogin, $window){
-		$rootScope.checkSession();
+		// $rootScope.checkSession();
 		$scope.user = {
 			email: '',
 			password: ''
