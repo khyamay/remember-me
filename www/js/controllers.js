@@ -1,6 +1,45 @@
 angular.module('mainApp.controllers', [])
 	.controller('loginCtrl', function($scope, $rootScope, $firebaseSimpleLogin, $window){
-		
+		$rootScope.checkSession();
+		$scope.user = {
+			email: '',
+			password: ''
+		};
+
+		$scope.validateUser = function (){
+		$rootScope.show('Please wait... Authenticating');
+
+			var email = this.user.email,
+				password = this.user.password;
+
+			if(!email || !password){
+				$rootScope.notify('Please fill up both fields');
+				return false;
+			}
+
+			$rootScope.auth.$login('password', {
+				email: email,
+				password: password
+			})
+			.then(function(user){
+				$rootScope.hide();
+				$rootScope.userEmail = user.email;
+				$window.location.href = ('#/tab/notes');
+			}, function(error){
+				if (error.code == 'INVALID_EMAIL'){
+					$rootScope.notify('Invalid Email Address');
+				}
+				else if (error.code == 'INVALID_PASSWORD'){
+					$rootScope.notify('Invalid Password');
+				}
+				else if (error.code == 'INVALID_USER'){
+					$rootScope.notify('Invalid User');
+				}
+				else {
+					$rootScope.notify('Opps something went wrong. Please try it again later');
+				}
+			});
+		}
 	})
 	.controller('signupCtrl', function($scope, $rootScope, $firebaseSimpleLogin, $window){
 		$scope.user = {
