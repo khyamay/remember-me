@@ -25,6 +25,28 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
     var authRef = new Firebase($rootScope.baseUrl);
     $rootScope.auth = $firebaseSimpleLogin(authRef);
 
+    
+    $rootScope.show = function(text){
+      $rootScope.loading = $ionicLoading.show({
+        content: text ? text: 'Loading...',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidith: 200,
+        showDelay: 0 
+      });
+    };
+
+    $rootScope.hide = function(){
+      $ionicLoading.hide();
+    }
+
+     $rootScope.notify = function(text) {
+            $rootScope.show(text);
+            $window.setTimeout(function() {
+                $rootScope.hide();
+            }, 1999);
+        };
+
     $rootScope.logout = function(){
       $rootScope.auth.$logout();
       $rootScope.checkSession();
