@@ -1,6 +1,6 @@
 angular.module('mainApp.controllers', [])
 	.controller('loginCtrl', function($scope, $rootScope, $firebaseSimpleLogin, $window){
-		// $rootScope.checkSession();
+		$rootScope.checkSession();
 		$scope.user = {
 			email: '',
 			password: ''
@@ -44,21 +44,27 @@ angular.module('mainApp.controllers', [])
 	.controller('signupCtrl', function($scope, $rootScope, $firebaseSimpleLogin, $window){
 		$scope.user = {
 			email: "",
-			password: ""
+			password: "",
+			conPassword:""
 		};
 
 		$scope.addUser = function(){
-			var email = this.user.email,
-				password = this.user.password,
-				user = $scope.user;
+				var user = $scope.user;
 
 
-				if(!email || !password){
-					$rootScope.notify('invalid crendentails');
+				if(!user.email || !user.password || !user.conPassword){
+					$rootScope.notify('Please fill up all the fields!!');
 					return false;
 				}
+
+
+        		if (user.password !== user.conPassword) {
+          			$rootScope.notify('Passwords must match');
+          			return false;
+        		}
+
 				$rootScope.show('Please wait.. Registering');
-				var register = $rootScope.auth.$createUser(email, password);
+				var register = $rootScope.auth.$createUser(user.email, user.password);
 
 				register.then(function(user){
 					$rootScope.hide();
