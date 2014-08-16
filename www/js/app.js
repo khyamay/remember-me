@@ -40,11 +40,12 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
       $ionicLoading.hide();
     }
 
-     $rootScope.notify = function(text) {
+     $rootScope.notify = function(text, time) {
+            var time = time || 1999;
             $rootScope.show(text);
             $window.setTimeout(function() {
                 $rootScope.hide();
-            }, 1999);
+            }, time);
         };
 
     $rootScope.logout = function(){

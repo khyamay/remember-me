@@ -63,13 +63,12 @@ angular.module('mainApp.controllers', [])
           			return false;
         		}
 
-				$rootScope.show('Please wait.. Registering');
-				var register = $rootScope.auth.$createUser(user.email, user.password);
+				$rootScope.notify('Please wait.. Registering', 999);
+				var register = $rootScope.auth.$createUser(user.email, user.password, false );
 
 				register.then(function(user){
-					$rootScope.hide();
-					console.log(user);
-					$window.location.href= "#/tab/notes";
+					$rootScope.notify('Successfully registered!!!', 6999);
+					$window.location.href= "#/login/signin";
 
 				}, function(error){
 					$rootScope.hide();
@@ -84,6 +83,7 @@ angular.module('mainApp.controllers', [])
 					}
 					
 				});
+
 		}
 	})
 	.controller('notesCtrl', function($rootScope, $scope, $ionicModal, $firebase, $timeout, FIREBASE_URL){
