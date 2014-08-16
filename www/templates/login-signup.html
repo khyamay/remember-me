@@ -2,18 +2,25 @@
 <h1 class="title">Sign Up</h1>
 </ion-header-bar>
 <ion-content class="has-header padding">
-<div class="list">
-	<label class="item item-input">
-	<span class="input-label">Email</span>
-	<input type="text" ng-model="user.email">
+<span class="full">
+    <img class="logo" ng-src="./img/soothe.png">
+    </span>
+  <div class="list list-inset">
+  <label class="item item-input">
+    <input type="text" ng-model="user.username" placeholder="Username">
+  </label>
+  <label class="item item-input">
+    <input type="text" ng-model="user.email" placeholder="Email">
+  </label>
+  <label class="item item-input">
+    <input type="password" ng-model="user.password" placeholder="Password">
+  </label>
+  <label class="item item-input">
+    <input type="password" ng-model="user.password" placeholder="Confirm Password">
+  </label>
+   <button class="button button-block button-positive" ng-click="addUser()">
+	Sign Up</i></button>
 	</label>
-	<label class="item item-input">
-	<span class="input-label">Password</span>
-	<input type="password" ng-model="user.password">
-	</label>
-	<label class="item item-input">
-	<button class="button button-block button-positive" ng-click="addUser()">
-	SignUp</button>
-	</label>
+</div>
 </div>
 </ion-content>
