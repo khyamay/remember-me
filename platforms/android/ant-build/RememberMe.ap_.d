@@ -155,6 +155,9 @@
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer/www \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer/www/FileTransfer.js \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer/www/FileTransferError.js \
+/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/templates/login-signin.html \
+/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/templates/login-signup.html \
+/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/templates/login.html \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/templates/newNotes.html \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/templates/notes-note.html \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/templates/notes-update.html \

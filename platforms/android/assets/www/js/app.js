@@ -9,7 +9,7 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel|blob|cdvfile|content):|data:image\//);
 
 })
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope, $firebaseSimpleLogin, $firebase, $window, $ionicLoading) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -20,6 +20,55 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
       StatusBar.styleDefault();
     }
 
+    $rootScope.userEmail = null;
+    $rootScope.baseUrl = 'https://remember-me.firebaseio.com/';
+    var authRef = new Firebase($rootScope.baseUrl);
+    $rootScope.auth = $firebaseSimpleLogin(authRef);
+
+    
+    $rootScope.show = function(text){
+      $rootScope.loading = $ionicLoading.show({
+        content: text ? text: 'Loading...',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidith: 200,
+        showDelay: 0 
+      });
+    };
+
+    $rootScope.hide = function(){
+      $ionicLoading.hide();
+    }
+
+     $rootScope.notify = function(text) {
+            $rootScope.show(text);
+            $window.setTimeout(function() {
+                $rootScope.hide();
+            }, 1999);
+        };
+
+    $rootScope.logout = function(){
+      $rootScope.auth.$logout();
+      $rootScope.checkSession();
+    };
+
+    $rootScope.checkSession = function(){
+      var auth = new FirebaseSimpleLogin(authRef, function(error, user){
+        if(error){
+          $rootScope.userEmail = null;
+          $window.location.href = ('#/login/signin');
+        
+        } else if (user){
+          $rootScope.userEmail = user.email;
+          $window.location.href= ('#/tab/notes');
+        
+        } else {
+          $rootScope.userEmail = null;
+          $window.location.href = ('#/login/signin');
+        }
+
+      });
+    } 
   });
 })
 .config(function($stateProvider, $urlRouterProvider){
@@ -74,8 +123,31 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
       controller: 'messagesCtrl' 
         }  
       }
-    });
-    $urlRouterProvider.otherwise('/tab/notes');
+    })
+    .state('login', {
+      url: '/login',
+      abstract: true,
+      templateUrl: 'templates/login.html'
+    })
+    .state('login.signin', {
+      url: '/signin',
+      views: {
+        'login-signin': {
+          templateUrl: 'templates/login-signin.html',
+          controller: 'loginCtrl'
+        }
+      }
+    })
+    .state('login.signup', {
+      url: '/signup',
+      views: {
+        'login-signup': {
+          templateUrl: 'templates/login-signup.html',
+          controller: 'signupCtrl'
+        }
+      }
+    })
+    $urlRouterProvider.otherwise('/login/signup');
 })
   .constant('FIREBASE_URL','https://remember-me.firebaseio.com/notes')
   .constant('MFB_URL', 'https://remember-me.firebaseio.com/messages')
