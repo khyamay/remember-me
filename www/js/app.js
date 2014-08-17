@@ -152,4 +152,5 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
 })
   .constant('FIREBASE_URL','https://remember-me.firebaseio.com/notes')
   .constant('MFB_URL', 'https://remember-me.firebaseio.com/messages')
-  .constant('IFB_URL', 'https://remember-me.firebaseio.com/images');
+  .constant('IFB_URL', 'https://remember-me.firebaseio.com/images')
+  .constant('loginRedirectPath', '/signin');
