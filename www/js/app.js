@@ -9,7 +9,7 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel|blob|cdvfile|content):|data:image\//);
 
 })
-.run(function($ionicPlatform, $rootScope, $firebaseSimpleLogin, $firebase, $window, $ionicLoading) {
+.run(function($ionicPlatform, $state, $rootScope, $firebaseSimpleLogin, $firebase, $window, $ionicLoading) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -25,7 +25,26 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
     var authRef = new Firebase($rootScope.baseUrl);
     $rootScope.auth = $firebaseSimpleLogin(authRef);
 
-    
+    $rootScope.auth.$getCurrentUser().then(function(user){
+      if(!user){
+        $rootScope.userEmail = null;
+        $state.go('login.signin');
+      }
+    }, function(err){
+      console.error(err);
+    });
+
+    $rootScope.$on('$firebaseSimpleLogin:login', function(e, user) {
+    $rootScope.userEmail = user.email;
+    $state.go('tab.notes');
+      });
+
+  $rootScope.$on('$firebaseSimpleLogin:logout', function(e, user) {
+    console.log($state);
+    $rootScope.userEmail = null;
+    $state.go('login.signin');
+      });
+
     $rootScope.show = function(text){
       $rootScope.loading = $ionicLoading.show({
         content: text ? text: 'Loading...',
@@ -50,26 +69,27 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
 
     $rootScope.logout = function(){
       $rootScope.auth.$logout();
-      $rootScope.checkSession();
     };
 
-    $rootScope.checkSession = function(){
-      var auth = new FirebaseSimpleLogin(authRef, function(error, user){
-        if(error){
-          $rootScope.userEmail = null;
-          $window.location.href = ('#/login/signin');
+    // $rootScope.checkSession = function(){
+    //   var auth = new FirebaseSimpleLogin(authRef, function(error, user){
+    //     if(error){
+    //       $rootScope.userEmail = null;
+    //       $window.location.href = ('#/login/signin');
         
-        } else if (user){
-          $rootScope.userEmail = user.email;
-          $window.location.href= ('#/tab/notes');
+    //     } else if (user){
+    //       $rootScope.userEmail = user.email;
+    //       $window.location.href= ('#/tab/notes');
         
-        } else {
-          $rootScope.userEmail = null;
-          $window.location.href = ('#/login/signin');
-        }
+    //     } else {
+    //       $rootScope.userEmail = null;
+    //       $window.location.href = ('#/login/signin');
+    //     }
 
-      });
-    } 
+    //   });
+    // } 
+
+
   });
 })
 .config(function($stateProvider, $urlRouterProvider){
@@ -81,16 +101,17 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
     })
     .state('tab.notes', {
       url: '/notes',
+      authRequired: true,
       views: {
         'tab-notes': {
         templateUrl: 'templates/tab-notes.html',
         controller: 'notesCtrl'
         }
       } 
-        
     })
     .state('tab.notes-note',{
       url: '/notes/:noteId',
+     authRequired: true,  
       views: {
         'tab-notes': {
           templateUrl: 'templates/notes-note.html',
@@ -100,28 +121,32 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
     })
     .state('tab.pictures', {
       url: '/pictures',
+      authRequired: true,  
       views: {
         'tab-pictures': {
         templateUrl: 'templates/tab-pictures.html',
-        controller: 'picturesCtrl'  
+        controller: 'picturesCtrl' 
         }
       }
     })
     .state('tab.notes-update', {
       url: '/notes/edit/:noteId',
+     authRequired: true, 
       views: {
         'tab-notes':{
           templateUrl: 'templates/notes-update.html',
           controller: 'updateNotesCtrl'
+
         }
       }
     })
     .state('tab.messages', {
       url: '/messages',
+     authRequired: true, 
       views : {
         'tab-messages': {
       templateUrl: 'templates/tab-messages.html',
-      controller: 'messagesCtrl' 
+      controller: 'messagesCtrl'
         }  
       }
     })
@@ -153,4 +178,6 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
   .constant('FIREBASE_URL','https://remember-me.firebaseio.com/notes')
   .constant('MFB_URL', 'https://remember-me.firebaseio.com/messages')
   .constant('IFB_URL', 'https://remember-me.firebaseio.com/images')
-  .constant('loginRedirectPath', '/signin');
+  .constant('loginRedirectPath', '/login/signin');
+  // .constant('loginStateName', 'login.signin')
+  // .constant('alreadyLoggedInStateName', 'tab.notes') 
