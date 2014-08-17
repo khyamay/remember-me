@@ -40,11 +40,12 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
       $ionicLoading.hide();
     }
 
-     $rootScope.notify = function(text) {
+     $rootScope.notify = function(text, time) {
+            var time = time || 1999;
             $rootScope.show(text);
             $window.setTimeout(function() {
                 $rootScope.hide();
-            }, 1999);
+            }, time);
         };
 
     $rootScope.logout = function(){
@@ -147,7 +148,7 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
         }
       }
     })
-    $urlRouterProvider.otherwise('/login/signin');
+    $urlRouterProvider.otherwise('/login/signup');
 })
   .constant('FIREBASE_URL','https://remember-me.firebaseio.com/notes')
   .constant('MFB_URL', 'https://remember-me.firebaseio.com/messages')

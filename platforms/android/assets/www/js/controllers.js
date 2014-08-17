@@ -44,26 +44,31 @@ angular.module('mainApp.controllers', [])
 	.controller('signupCtrl', function($scope, $rootScope, $firebaseSimpleLogin, $window){
 		$scope.user = {
 			email: "",
-			password: ""
+			password: "",
+			conPassword:""
 		};
 
 		$scope.addUser = function(){
-			var email = this.user.email,
-				password = this.user.password,
-				user = $scope.user;
+				var user = $scope.user;
 
 
-				if(!email || !password){
-					$rootScope.notify('invalid crendentails');
+				if(!user.email || !user.password || !user.conPassword){
+					$rootScope.notify('Please fill up all the fields!!');
 					return false;
 				}
-				$rootScope.show('Please wait.. Registering');
-				var register = $rootScope.auth.$createUser(email, password);
+
+
+        		if (user.password !== user.conPassword) {
+          			$rootScope.notify('Passwords must match');
+          			return false;
+        		}
+
+				$rootScope.notify('Please wait.. Registering', 999);
+				var register = $rootScope.auth.$createUser(user.email, user.password, false );
 
 				register.then(function(user){
-					$rootScope.hide();
-					console.log(user);
-					$window.location.href= "#/tab/notes";
+					$rootScope.notify('Successfully registered!!!', 6999);
+					$window.location.href= "#/login/signin";
 
 				}, function(error){
 					$rootScope.hide();
@@ -78,6 +83,7 @@ angular.module('mainApp.controllers', [])
 					}
 					
 				});
+
 		}
 	})
 	.controller('notesCtrl', function($rootScope, $scope, $ionicModal, $firebase, $timeout, FIREBASE_URL){

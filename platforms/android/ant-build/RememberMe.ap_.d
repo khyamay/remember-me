@@ -44,8 +44,7 @@
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/css/ionic.app.min.css \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/css/style.css \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/img/ionic.png \
-/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/img/logo.png \
-/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/img/remember.png \
+/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/img/rem.png \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/img/soothe.png \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/js/app.js \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/js/controllers.js \
