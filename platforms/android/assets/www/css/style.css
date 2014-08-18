@@ -115,6 +115,9 @@ background-color: #F2F2F2 !important;
 background-color: #EFEFE5 !important;
 	
 }*/
+.signin-page { 
+	position: relative;
+}
 
 .soothe-btn {
 	background-color: #00876F !important;
@@ -123,9 +126,9 @@ background-color: #EFEFE5 !important;
 	font-weight: bold;	 
 }
 
-ion-nav-bar {
+/*ion-nav-bar {
 	background-color: #00876F !important;
-}
+}*/
 
 .login .tabs{
 	display: none !important;
