@@ -1,21 +1,22 @@
 
-<ion-view title="Sign In">
-<ion-content class="has-header padding" has-tabs="false">
+<ion-view title="Sign In" hide-nav-bar="true">
+<ion-content class="has-header signin-page" has-tabs="false">
 	
 	<span class="full">
     <img class="logo" ng-src="./img/rem.png">
     </span>
 
-  <div class="list list-inset">
+  <div class="list list-inset signin-form">
   <label class="item item-input">
     <input type="text" ng-model="user.email" placeholder="Email">
   </label>
   <label class="item item-input">
     <input type="password" ng-model="user.password" placeholder="Password">
   </label>
-   <button class="button button-block button-positive" ng-click="validateUser()">
+   <button class="button button-block soothe-btn" ng-click="validateUser()">
 	Log In <i class="ion-arrow-right-c"></i></button>
-	</label>
+	<span class="register">Need an account? <a href="#/login/signup">Register Here <i class="ion-arrow-right-c"></i></a></span>
 </div>
+
 </ion-content>
 </ion-view>
