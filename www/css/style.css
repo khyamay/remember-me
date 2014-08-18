@@ -105,3 +105,40 @@ div.item.item-text-wrap.ng-binding, label.item.item-input, div.item{
 	margin-bottom:80px;
 	margin-top: 60px;
 }
+
+ion-view.pane, .signin-page, .signup-page, div.list.list-inset{
+background-color: #F2F2F2 !important;
+
+}
+
+/*ion-view.pane, .signin-page, .signup-page, div.list.list-inset{
+background-color: #EFEFE5 !important;
+	
+}*/
+
+.soothe-btn {
+	background-color: #00876F !important;
+	border-color: #00876F !important; 
+	color: #fff;
+	font-weight: bold;	 
+}
+
+ion-nav-bar {
+	background-color: #00876F !important;
+}
+
+.login .tabs{
+	display: none !important;
+}
+
+.register { 
+	margin-left: 22%;	
+}
+
+.register a { 
+	font-weight: bold;
+	color: #EC6961;
+}
+::-webkit-input-placeholder {
+	color: #555  !important;
+}

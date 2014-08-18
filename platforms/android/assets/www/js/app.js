@@ -27,6 +27,7 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
 
     $rootScope.auth.$getCurrentUser().then(function(user){
       if(!user){
+        $rootScope.userEmail = null;
         $state.go('login.signin');
       }
     }, function(err){
@@ -40,6 +41,7 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
 
   $rootScope.$on('$firebaseSimpleLogin:logout', function(e, user) {
     console.log($state);
+    $rootScope.userEmail = null;
     $state.go('login.signin');
       });
 
