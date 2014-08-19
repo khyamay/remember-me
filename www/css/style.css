@@ -146,3 +146,8 @@ background-color: #EFEFE5 !important;
 ::-webkit-input-placeholder {
 	color: #555  !important;
 }
+
+ion-item {
+	padding: 0 !important; 
+	margin: 0 !important;
+}
