@@ -115,9 +115,9 @@ background-color: #F2F2F2 !important;
 background-color: #EFEFE5 !important;
 	
 }*/
-.signin-page { 
+/*.signin-page { 
 	position: relative;
-}
+}*/
 
 .soothe-btn {
 	background-color: #2E8ED1 !important;
@@ -136,7 +136,9 @@ background-color: #EFEFE5 !important;
 
 .register { 
 	display: table;
-	margin: auto auto;	
+	margin: auto auto;
+	width: 100%;
+	text-align: center;	
 }
 
 .register a { 
