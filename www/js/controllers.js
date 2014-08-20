@@ -7,7 +7,7 @@ angular.module('mainApp.controllers', [])
 		};
 
 		$scope.validateUser = function (){
-		$rootScope.show('Please wait... Authenticating');
+		$rootScope.notify('Please wait... Authenticating');
 
 			var email = this.user.email,
 				password = this.user.password;
@@ -23,6 +23,7 @@ angular.module('mainApp.controllers', [])
 			})
 			.then(function(user){
 				$rootScope.hide();
+				$rootScope.notify('Successfully Logged in');
 				$rootScope.userEmail = user.email;
 				$window.location.href = ('#/tab/notes');
 			}, function(error){
@@ -63,7 +64,7 @@ angular.module('mainApp.controllers', [])
           			return false;
         		}
 
-				$rootScope.notify('Please wait.. Registering', 999);
+				$rootScope.notify('Please wait.. Registering', 6999);
 				var register = $rootScope.auth.$createUser(user.email, user.password, false );
 
 				register.then(function(user){
