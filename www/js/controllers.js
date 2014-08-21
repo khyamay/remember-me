@@ -7,7 +7,7 @@ angular.module('mainApp.controllers', [])
 		};
 
 		$scope.validateUser = function (){
-		$rootScope.notify('Please wait... Authenticating');
+		$rootScope.notify('Please wait... Authenticating', 999);
 
 			var email = this.user.email,
 				password = this.user.password;
@@ -22,8 +22,8 @@ angular.module('mainApp.controllers', [])
 				password: password
 			})
 			.then(function(user){
-				$rootScope.hide();
-				$rootScope.notify('Successfully Logged in');
+				// // $rootScope.hide();
+				// $rootScope.notify('Successfully Logged in');
 				$rootScope.userEmail = user.email;
 				$window.location.href = ('#/tab/notes');
 			}, function(error){
@@ -64,11 +64,11 @@ angular.module('mainApp.controllers', [])
           			return false;
         		}
 
-				$rootScope.notify('Please wait.. Registering', 6999);
+				$rootScope.notify('Please wait.. Registering', 999);
 				var register = $rootScope.auth.$createUser(user.email, user.password, false );
 
 				register.then(function(user){
-					$rootScope.notify('Successfully registered!!!', 6999);
+					$rootScope.notify('Successfully registered!!!', 999);
 					$window.location.href= "#/login/signin";
 
 				}, function(error){
@@ -275,7 +275,7 @@ angular.module('mainApp.controllers', [])
 		}
 
 		  function photoError(message) {
-		    alert('Failed because: ' + message);
+		    console.log('Failed because: ' + message);
   		}
 
 
