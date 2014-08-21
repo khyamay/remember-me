@@ -1,6 +1,6 @@
 <div id="task-view" class="modal slide-in-up" ng-controller="newNotesCtrl">
 <header class="bar bar-header bar-positive">
-	<h1 class="title">New Notes</h1>
+	<h1 class="title">New Note</h1>
 	<button class="button button-clear button-primary" ng-click="close()">Close</button>
 	</header>
 	<ion-content class="padding has-header">
@@ -11,7 +11,7 @@
 		  </label>
 		  <br/>
 		  <label class="item item-input">
-		    <textarea rows="12" placeholder="Notes...." ng-model="note.post" required></textarea>
+		    <textarea rows="8" placeholder="Notes...." ng-model="note.post" required></textarea>
 		  </label>
 		  <div class="row">
 		  <button type="submit" class="button-positive button-block button col col-33" ng-disabled="addForm.$invalid">Post<i class="ion-paper-airplane margin"></i></button>

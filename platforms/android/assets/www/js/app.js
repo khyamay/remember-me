@@ -60,7 +60,7 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
     }
 
      $rootScope.notify = function(text, time) {
-            var time = time || 1999;
+            var time = time || 999;
             $rootScope.show(text);
             $window.setTimeout(function() {
                 $rootScope.hide();
@@ -69,6 +69,7 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
 
     $rootScope.logout = function(){
       $rootScope.auth.$logout();
+      $rootScope.notify('Succesfully Logged out!!');
     };
 
     // $rootScope.checkSession = function(){

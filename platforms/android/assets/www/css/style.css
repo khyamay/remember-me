@@ -115,13 +115,13 @@ background-color: #F2F2F2 !important;
 background-color: #EFEFE5 !important;
 	
 }*/
-.signin-page { 
+/*.signin-page { 
 	position: relative;
-}
+}*/
 
 .soothe-btn {
-	background-color: #00876F !important;
-	border-color: #00876F !important; 
+	background-color: #2E8ED1 !important;
+	border-color: #2E8ED1 !important; 
 	color: #fff;
 	font-weight: bold;	 
 }
@@ -135,7 +135,10 @@ background-color: #EFEFE5 !important;
 }
 
 .register { 
-	margin-left: 22%;	
+	display: table;
+	margin: auto auto;
+	width: 100%;
+	text-align: center;	
 }
 
 .register a { 
@@ -144,4 +147,23 @@ background-color: #EFEFE5 !important;
 }
 ::-webkit-input-placeholder {
 	color: #555  !important;
+}
+
+ion-item {
+	padding: 0 !important; 
+	margin: 0 !important;
+}
+
+.image-container{ 
+	max-width: 90vw; 
+    max-height: 100.25vw;
+    margin: auto;
+	
+}
+
+.picture-container {
+	position:relative;
+	top: -10px;
+	margin-bottom: 5px;
+
 }

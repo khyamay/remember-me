@@ -9,11 +9,13 @@
 	<button class="button-positive button-block button col col-offset-33" ng-click="getPhoto()">Camera <i class="ion-android-camera"></i></button>
 	</div>
 
-  <div class="card">
+  <div class="card picture-container">
 		<div class="item item-image">
 			<div class="row">
 				<div class="col">
-					<img ng-show="imageURI" id="smallimage" ng-src="{{imageURI}}" size="10" />
+					<div class="image-container" ng-show="imageURI">
+					<img  id="smallimage" ng-src="{{imageURI}}"  style="width:100%" />
+					</div>
 					<span class="message-note" ng-hide="imageURI"><p>No image selected!!</p></span>
 				</div>
 			</div>			
