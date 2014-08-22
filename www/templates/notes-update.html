@@ -1,5 +1,5 @@
 	<ion-view title="Update">
-        <ion-content has-header="true" class="padding">
+        <ion-content has-tabs="false" class="padding">
          <form ng-submit="updateNote(note)" name="addForm" ng-controller="updateNotesCtrl">
 		<div class="list">
 		  <label class="item item-input">
@@ -7,7 +7,7 @@
 		  </label>
 		  <br/>
 		  <label class="item item-input">
-		    <textarea rows="8" placeholder="Notes...." ng-model="note.post" required></textarea>
+		    <textarea rows="6" placeholder="Notes...." ng-model="note.post" required></textarea>
 		  </label>
 		  <div class="row">
 		  <button type="submit" class="button-positive button-block button col col-33">Update<i class="ion-paper-airplane margin"></i></button>
