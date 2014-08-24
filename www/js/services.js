@@ -66,6 +66,9 @@ angular.module('mainApp.services', [])
 			signedIn: function(){
 				return auth.user !== null;
 			},
+			login: function(user){
+				return auth.$login('password', user);
+			},
 			logout: function(){
 				auth.$logout();
 			}
