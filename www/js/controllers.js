@@ -5,6 +5,11 @@ angular.module('mainApp.controllers', [])
 			email: '',
 			password: ''
 		};
+
+		$scope.$on('$firebaseSimpleLogin:login', function(){
+				$window.location.href= "#/tab/notes";
+			});
+
 		$scope.validateUser = function (){
 		$rootScope.notify('Please wait... Authenticating', 999);
 
@@ -16,15 +21,9 @@ angular.module('mainApp.controllers', [])
 				return false;
 			}
 
-			$rootScope.auth.$login('password', {
-				email: email,
-				password: password
-			})
-			.then(function(user){
-		
-				$rootScope.userEmail = user.email;
-				$window.location.href = ('#/tab/notes');
-			}, function(error){
+			Auth.login($scope.user).then(function(){
+				$window.location.href= "#/tab/notes";
+			},function(error){
 				if (error.code == 'INVALID_EMAIL'){
 					$rootScope.notify('Invalid Email Address');
 				}
@@ -38,6 +37,30 @@ angular.module('mainApp.controllers', [])
 					$rootScope.notify('Opps something went wrong. Please try it again later');
 				}
 			});
+
+
+			// $rootScope.auth.$login('password', {
+			// 	email: email,
+			// 	password: password
+			// })
+			// .then(function(user){
+		
+			// 	$rootScope.userEmail = user.email;
+			// 	$window.location.href = ('#/tab/notes');
+			// }, function(error){
+			// 	if (error.code == 'INVALID_EMAIL'){
+			// 		$rootScope.notify('Invalid Email Address');
+			// 	}
+			// 	else if (error.code == 'INVALID_PASSWORD'){
+			// 		$rootScope.notify('Invalid Password');
+			// 	}
+			// 	else if (error.code == 'INVALID_USER'){
+			// 		$rootScope.notify('Invalid User');
+			// 	}
+			// 	else {
+			// 		$rootScope.notify('Opps something went wrong. Please try it again later');
+			// 	}
+			// });
 		}
 	})
 	.controller('signupCtrl', function($scope, $rootScope, $window, Auth){
