@@ -72,25 +72,6 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
       $rootScope.notify('Succesfully Logged out!!');
     };
 
-    // $rootScope.checkSession = function(){
-    //   var auth = new FirebaseSimpleLogin(authRef, function(error, user){
-    //     if(error){
-    //       $rootScope.userEmail = null;
-    //       $window.location.href = ('#/login/signin');
-        
-    //     } else if (user){
-    //       $rootScope.userEmail = user.email;
-    //       $window.location.href= ('#/tab/notes');
-        
-    //     } else {
-    //       $rootScope.userEmail = null;
-    //       $window.location.href = ('#/login/signin');
-    //     }
-
-    //   });
-    // } 
-
-
   });
 })
 .config(function($stateProvider, $urlRouterProvider){

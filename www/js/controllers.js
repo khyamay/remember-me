@@ -5,7 +5,6 @@ angular.module('mainApp.controllers', [])
 			email: '',
 			password: ''
 		};
-
 		$scope.validateUser = function (){
 		$rootScope.notify('Please wait... Authenticating', 999);
 
@@ -22,8 +21,7 @@ angular.module('mainApp.controllers', [])
 				password: password
 			})
 			.then(function(user){
-				// // $rootScope.hide();
-				// $rootScope.notify('Successfully Logged in');
+		
 				$rootScope.userEmail = user.email;
 				$window.location.href = ('#/tab/notes');
 			}, function(error){
