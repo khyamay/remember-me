@@ -55,3 +55,23 @@ angular.module('mainApp.services', [])
 			getNotes: getNotes
 		}
 	})
+	.factory('Auth', function($rootScope, $firebaseSimpleLogin, FIREBASE_URL){
+		var authRef = new Firebase(FIREBASE_URL);
+		var auth = $firebaseSimpleLogin(authRef);
+
+		var Auth = {
+			register: function (user){
+				return auth.$createUser(user.email, user.password);
+			},
+			signedIn: function(){
+				return auth.ser !== null;
+			},
+			logout: function(){
+				auth.$logout();
+			}
+		};
+
+		$rootScope.signedIn = function(){
+			return Auth.signedIn();
+		}
+	})
