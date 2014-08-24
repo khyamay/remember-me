@@ -1,13 +1,14 @@
 angular.module('mainApp.controllers', [])
-	.controller('loginCtrl', function($scope, $rootScope, $firebaseSimpleLogin, $window, Auth){
+	.controller('loginCtrl', function($scope, $rootScope, $firebaseSimpleLogin, $window, $state, Auth){
 		
 		$scope.user = {
 			email: '',
 			password: ''
 		};
 
-		$scope.$on('$firebaseSimpleLogin:login', function(){
-				$window.location.href= "#/tab/notes";
+		$scope.$on('$firebaseSimpleLogin:login', function(e, user){
+				$rootScope.userEmail = user.email;
+  	 			 $state.go('tab.notes');
 			});
 
 		$scope.validateUser = function (){
@@ -22,7 +23,7 @@ angular.module('mainApp.controllers', [])
 			}
 
 			Auth.login($scope.user).then(function(){
-				$window.location.href= "#/tab/notes";
+				 $state.go('tab.notes');
 			},function(error){
 				if (error.code == 'INVALID_EMAIL'){
 					$rootScope.notify('Invalid Email Address');
