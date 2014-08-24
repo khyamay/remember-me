@@ -1,5 +1,5 @@
 angular.module('mainApp.controllers', [])
-	.controller('loginCtrl', function($scope, $rootScope, $firebaseSimpleLogin, $window){
+	.controller('loginCtrl', function($scope, $rootScope, $firebaseSimpleLogin, $window, Auth){
 		
 		$scope.user = {
 			email: '',
@@ -40,12 +40,16 @@ angular.module('mainApp.controllers', [])
 			});
 		}
 	})
-	.controller('signupCtrl', function($scope, $rootScope, $firebaseSimpleLogin, $window){
+	.controller('signupCtrl', function($scope, $rootScope, $window, Auth){
 		$scope.user = {
 			email: "",
 			password: "",
 			conPassword:""
 		};
+
+		// if(Auth.signedIn()){
+		// 	$window.location.href= "#/tab/notes";
+		// };
 
 		$scope.addUser = function(){
 				var user = $scope.user;
@@ -63,7 +67,8 @@ angular.module('mainApp.controllers', [])
         		}
 
 				$rootScope.notify('Please wait.. Registering', 999);
-				var register = $rootScope.auth.$createUser(user.email, user.password, false );
+
+				var register = Auth.register(user);
 
 				register.then(function(user){
 					$rootScope.notify('Successfully registered!!!', 999);
