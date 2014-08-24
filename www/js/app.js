@@ -9,7 +9,7 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel|blob|cdvfile|content):|data:image\//);
 
 })
-.run(function($ionicPlatform, $state, $rootScope, $firebaseSimpleLogin, $firebase, $window, $ionicLoading) {
+.run(function($ionicPlatform, $state, $rootScope, $firebaseSimpleLogin, $firebase, $window, $ionicLoading, Auth) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -23,27 +23,27 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
     $rootScope.userEmail = null;
     $rootScope.baseUrl = 'https://remember-me.firebaseio.com/';
     var authRef = new Firebase($rootScope.baseUrl);
-    $rootScope.auth = $firebaseSimpleLogin(authRef);
+    // $rootScope.auth = $firebaseSimpleLogin(authRef);
 
-    $rootScope.auth.$getCurrentUser().then(function(user){
-      if(!user){
-        $rootScope.userEmail = null;
-        $state.go('login.signin');
-      }
-    }, function(err){
-      console.error(err);
-    });
+    // $rootScope.auth.$getCurrentUser().then(function(user){
+    //   if(!user){
+    //     $rootScope.userEmail = null;
+    //     $state.go('login.signin');
+    //   }
+    // }, function(err){
+    //   console.error(err);
+    // });
 
-    $rootScope.$on('$firebaseSimpleLogin:login', function(e, user) {
-    $rootScope.userEmail = user.email;
-    $state.go('tab.notes');
-      });
+  //   $rootScope.$on('$firebaseSimpleLogin:login', function(e, user) {
+  //   $rootScope.userEmail = user.email;
+  //   $state.go('tab.notes');
+  //     });
 
-  $rootScope.$on('$firebaseSimpleLogin:logout', function(e, user) {
-    console.log($state);
-    $rootScope.userEmail = null;
-    $state.go('login.signin');
-      });
+  // $rootScope.$on('$firebaseSimpleLogin:logout', function(e, user) {
+  //   console.log($state);
+  //   $rootScope.userEmail = null;
+  //   $state.go('login.signin');
+  //     });
 
     $rootScope.show = function(text){
       $rootScope.loading = $ionicLoading.show({
@@ -68,7 +68,7 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
         };
 
     $rootScope.logout = function(){
-      $rootScope.auth.$logout();
+      Auth.logout()
       $rootScope.notify('Succesfully Logged out!!');
     };
 
