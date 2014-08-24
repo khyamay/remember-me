@@ -64,7 +64,7 @@ angular.module('mainApp.services', [])
 				return auth.$createUser(user.email, user.password);
 			},
 			signedIn: function(){
-				return auth.ser !== null;
+				return auth.user !== null;
 			},
 			logout: function(){
 				auth.$logout();
@@ -73,5 +73,8 @@ angular.module('mainApp.services', [])
 
 		$rootScope.signedIn = function(){
 			return Auth.signedIn();
-		}
+		};
+
+		return Auth;
+
 	})
