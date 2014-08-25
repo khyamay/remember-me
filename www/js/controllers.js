@@ -210,7 +210,7 @@ angular.module('mainApp.controllers', [])
 		}
 
 	})
-	.controller('picturesCtrl', function($scope, $rootScope, Pictures, $ionicModal, $firebase, IFB_URL, $timeout){
+	.controller('picturesCtrl', function($scope, $rootScope, $ionicModal, $firebase, IFB_URL, $timeout){
 		// $scope.pictures = Pictures.all();
 		
 		//for calling uploading page
