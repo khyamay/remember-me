@@ -1,6 +1,12 @@
 angular.module('mainApp.controllers', [])
 	.controller('loginCtrl', function($scope, $rootScope, $firebaseSimpleLogin, $window, $state, Auth){
 		
+		if (Auth.signedIn()) {
+			$state.go('tab.notes');
+			} else {
+				$state.go('login.signin');
+			}
+
 		$scope.user = {
 			email: '',
 			password: ''
