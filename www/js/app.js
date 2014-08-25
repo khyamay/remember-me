@@ -21,29 +21,12 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
     }
 
     $rootScope.userEmail = null;
-    $rootScope.baseUrl = 'https://remember-me.firebaseio.com/';
-    var authRef = new Firebase($rootScope.baseUrl);
-    // $rootScope.auth = $firebaseSimpleLogin(authRef);
 
-    // $rootScope.auth.$getCurrentUser().then(function(user){
-    //   if(!user){
-    //     $rootScope.userEmail = null;
-    //     $state.go('login.signin');
-    //   }
-    // }, function(err){
-    //   console.error(err);
-    // });
-
-  //   $rootScope.$on('$firebaseSimpleLogin:login', function(e, user) {
-  //   $rootScope.userEmail = user.email;
-  //   $state.go('tab.notes');
-  //     });
-
-  // $rootScope.$on('$firebaseSimpleLogin:logout', function(e, user) {
-  //   console.log($state);
-  //   $rootScope.userEmail = null;
-  //   $state.go('login.signin');
-  //     });
+  $rootScope.$on('$firebaseSimpleLogin:logout', function(e, user) {
+    console.log($state);
+    $rootScope.userEmail = null;
+    $state.go('login.signin');
+      });
 
     $rootScope.show = function(text){
       $rootScope.loading = $ionicLoading.show({
