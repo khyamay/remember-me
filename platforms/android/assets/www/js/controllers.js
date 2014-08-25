@@ -1,10 +1,21 @@
 angular.module('mainApp.controllers', [])
-	.controller('loginCtrl', function($scope, $rootScope, $firebaseSimpleLogin, $window){
+	.controller('loginCtrl', function($scope, $rootScope, $firebaseSimpleLogin, $window, $state, Auth){
 		
+		if (Auth.signedIn()) {
+			$state.go('tab.notes');
+			} else {
+				$state.go('login.signin');
+			}
+
 		$scope.user = {
 			email: '',
 			password: ''
 		};
+
+		$scope.$on('$firebaseSimpleLogin:login', function(e, user){
+				$rootScope.userEmail = user.email;
+  	 			 $state.go('tab.notes');
+			});
 
 		$scope.validateUser = function (){
 		$rootScope.notify('Please wait... Authenticating', 999);
@@ -17,16 +28,9 @@ angular.module('mainApp.controllers', [])
 				return false;
 			}
 
-			$rootScope.auth.$login('password', {
-				email: email,
-				password: password
-			})
-			.then(function(user){
-				// // $rootScope.hide();
-				// $rootScope.notify('Successfully Logged in');
-				$rootScope.userEmail = user.email;
-				$window.location.href = ('#/tab/notes');
-			}, function(error){
+			Auth.login($scope.user).then(function(){
+				 $state.go('tab.notes');
+			},function(error){
 				if (error.code == 'INVALID_EMAIL'){
 					$rootScope.notify('Invalid Email Address');
 				}
@@ -40,14 +44,42 @@ angular.module('mainApp.controllers', [])
 					$rootScope.notify('Opps something went wrong. Please try it again later');
 				}
 			});
+
+
+			// $rootScope.auth.$login('password', {
+			// 	email: email,
+			// 	password: password
+			// })
+			// .then(function(user){
+		
+			// 	$rootScope.userEmail = user.email;
+			// 	$window.location.href = ('#/tab/notes');
+			// }, function(error){
+			// 	if (error.code == 'INVALID_EMAIL'){
+			// 		$rootScope.notify('Invalid Email Address');
+			// 	}
+			// 	else if (error.code == 'INVALID_PASSWORD'){
+			// 		$rootScope.notify('Invalid Password');
+			// 	}
+			// 	else if (error.code == 'INVALID_USER'){
+			// 		$rootScope.notify('Invalid User');
+			// 	}
+			// 	else {
+			// 		$rootScope.notify('Opps something went wrong. Please try it again later');
+			// 	}
+			// });
 		}
 	})
-	.controller('signupCtrl', function($scope, $rootScope, $firebaseSimpleLogin, $window){
+	.controller('signupCtrl', function($scope, $rootScope, $window, Auth){
 		$scope.user = {
 			email: "",
 			password: "",
 			conPassword:""
 		};
+
+		// if(Auth.signedIn()){
+		// 	$window.location.href= "#/tab/notes";
+		// };
 
 		$scope.addUser = function(){
 				var user = $scope.user;
@@ -65,7 +97,8 @@ angular.module('mainApp.controllers', [])
         		}
 
 				$rootScope.notify('Please wait.. Registering', 999);
-				var register = $rootScope.auth.$createUser(user.email, user.password, false );
+
+				var register = Auth.register(user);
 
 				register.then(function(user){
 					$rootScope.notify('Successfully registered!!!', 999);
