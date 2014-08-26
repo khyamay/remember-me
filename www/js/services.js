@@ -20,24 +20,6 @@ angular.module('mainApp.services', [])
 			}
 		}
 	}])
-	.factory('Form', function (){
-		var notes = [];
-
-		var addNotes = function (note){
-			notes.push(note);
-	
-		}
-
-		var getNotes = function (){
-			return notes;
-		}
-
-		
-		return {
-			addNotes: addNotes,
-			getNotes: getNotes
-		}
-	})
 	.factory('Auth', function($rootScope, $firebaseSimpleLogin, FIREBASE_URL){
 		var authRef = new Firebase(FIREBASE_URL);
 		var auth = $firebaseSimpleLogin(authRef);
