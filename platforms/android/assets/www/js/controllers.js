@@ -45,29 +45,6 @@ angular.module('mainApp.controllers', [])
 				}
 			});
 
-
-			// $rootScope.auth.$login('password', {
-			// 	email: email,
-			// 	password: password
-			// })
-			// .then(function(user){
-		
-			// 	$rootScope.userEmail = user.email;
-			// 	$window.location.href = ('#/tab/notes');
-			// }, function(error){
-			// 	if (error.code == 'INVALID_EMAIL'){
-			// 		$rootScope.notify('Invalid Email Address');
-			// 	}
-			// 	else if (error.code == 'INVALID_PASSWORD'){
-			// 		$rootScope.notify('Invalid Password');
-			// 	}
-			// 	else if (error.code == 'INVALID_USER'){
-			// 		$rootScope.notify('Invalid User');
-			// 	}
-			// 	else {
-			// 		$rootScope.notify('Opps something went wrong. Please try it again later');
-			// 	}
-			// });
 		}
 	})
 	.controller('signupCtrl', function($scope, $rootScope, $window, Auth){
@@ -76,10 +53,6 @@ angular.module('mainApp.controllers', [])
 			password: "",
 			conPassword:""
 		};
-
-		// if(Auth.signedIn()){
-		// 	$window.location.href= "#/tab/notes";
-		// };
 
 		$scope.addUser = function(){
 				var user = $scope.user;
@@ -210,7 +183,7 @@ angular.module('mainApp.controllers', [])
 		}
 
 	})
-	.controller('picturesCtrl', function($scope, $rootScope, Pictures, $ionicModal, $firebase, IFB_URL, $timeout){
+	.controller('picturesCtrl', function($scope, $rootScope, $ionicModal, $firebase, IFB_URL, $timeout){
 		// $scope.pictures = Pictures.all();
 		
 		//for calling uploading page

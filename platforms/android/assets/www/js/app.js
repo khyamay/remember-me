@@ -21,23 +21,6 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
     }
 
     $rootScope.userEmail = null;
-    // $rootScope.baseUrl = 'https://remember-me.firebaseio.com/';
-    // var authRef = new Firebase($rootScope.baseUrl);
-    // $rootScope.auth = $firebaseSimpleLogin(authRef);
-
-    // $rootScope.auth.$getCurrentUser().then(function(user){
-    //   if(!user){
-    //     $rootScope.userEmail = null;
-    //     $state.go('login.signin');
-    //   }
-    // }, function(err){
-    //   console.error(err);
-    // });
-
-  //   $rootScope.$on('$firebaseSimpleLogin:login', function(e, user) {
-  //   $rootScope.userEmail = user.email;
-  //   $state.go('tab.notes');
-  //     });
 
   $rootScope.$on('$firebaseSimpleLogin:logout', function(e, user) {
     console.log($state);
@@ -161,5 +144,3 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
   .constant('MFB_URL', 'https://remember-me.firebaseio.com/messages')
   .constant('IFB_URL', 'https://remember-me.firebaseio.com/images')
   .constant('loginRedirectPath', '/login/signin');
-  // .constant('loginStateName', 'login.signin')
-  // .constant('alreadyLoggedInStateName', 'tab.notes') 
