@@ -144,5 +144,3 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
   .constant('MFB_URL', 'https://remember-me.firebaseio.com/messages')
   .constant('IFB_URL', 'https://remember-me.firebaseio.com/images')
   .constant('loginRedirectPath', '/login/signin');
-  // .constant('loginStateName', 'login.signin')
-  // .constant('alreadyLoggedInStateName', 'tab.notes') 
