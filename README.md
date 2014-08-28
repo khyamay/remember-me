@@ -7,3 +7,12 @@
 * ~~Able to delete the upload picture~~ - Done 
 * ~~Add motivation message using API's (if found)~~ - Not Found, used the firebase to store some qoutes and retrieve it
 * ~~Backend or LocalStroge~~ - Used Firebase
+
+## To-Do List (For learning Purpose)
+* Categorizing the motivational messages
+* Ability to favorite motivational messages
+* Social Logins like FB & Twitter
+* Adding notes with pictures
+* Editing the notes with pictures
+* Notifications while deleting, editing, adding notes, pictures etc.
+
