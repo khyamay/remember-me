@@ -1,4 +1,3 @@
-/* Empty. Add your own CSS if you like */
 
 a { 
 	text-decoration: none;
@@ -107,17 +106,9 @@ div.item.item-text-wrap.ng-binding, label.item.item-input, div.item{
 }
 
 ion-view.pane, .signin-page, .signup-page, div.list.list-inset{
-background-color: #F2F2F2 !important;
+	background-color: #F2F2F2 !important;
 
 }
-
-/*ion-view.pane, .signin-page, .signup-page, div.list.list-inset{
-background-color: #EFEFE5 !important;
-	
-}*/
-/*.signin-page { 
-	position: relative;
-}*/
 
 .soothe-btn {
 	background-color: #2E8ED1 !important;
@@ -126,13 +117,6 @@ background-color: #EFEFE5 !important;
 	font-weight: bold;	 
 }
 
-/*ion-nav-bar {
-	background-color: #00876F !important;
-}*/
-
-/*.login .tabs{
-	display: none !important;
-}*/
 
 .register { 
 	display: table;

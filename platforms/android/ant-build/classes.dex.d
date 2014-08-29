@@ -67,4 +67,6 @@
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/ant-build/classes/org/apache/cordova/filetransfer/FileTransfer$TrackingInputStream.class \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/ant-build/classes/org/apache/cordova/filetransfer/FileTransfer.class \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/ant-build/classes/org/apache/cordova/filetransfer/FileUploadResult.class \
+/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/ant-build/classes/org/apache/cordova/networkinformation/NetworkManager$1.class \
+/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/ant-build/classes/org/apache/cordova/networkinformation/NetworkManager.class \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/ant-build/dexedLibs/classes-5be5d5dc4b38042f77d4f287022a82b3.jar \
