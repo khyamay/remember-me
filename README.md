@@ -15,4 +15,5 @@
 * Adding notes with pictures
 * Editing the notes with pictures
 * Notifications while deleting, editing, adding notes, pictures etc.
+* Using ExpressJS as backend for learning it
 
