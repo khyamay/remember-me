@@ -282,9 +282,11 @@ angular.module('mainApp.controllers', [])
 				}
 			};
 
+		//Wwhen the picture taken fro camera is success, this function will be called
 		 function photoSuccess(imageData) {
 			$scope.image = document.getElementById('smallimage');
-		    // hack until cordova 3.5.0 is released
+		   
+		    //a workaround to use Storage Access Framework in Cordova
 		  	$timeout(function(){	
 				if (imageData.substring(0,21)=="content://com.android") {
 		      	var photo_split=imageData.split("%3A");
