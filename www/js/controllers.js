@@ -222,7 +222,6 @@ angular.module('mainApp.controllers', [])
 					if (image.hasOwnProperty(key)){
 						image[key].key = key;
 						$scope.images.push(image[key]);
-						console.log(image[key]);
 					}
 				}
 
