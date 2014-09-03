@@ -1,11 +1,8 @@
-// Ionic Starter App
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
 angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.services', 'routeSecurity', 'simpleLoginTools'])
 
 .config(function($compileProvider){
+  // whitelisting of safe urls during img[src] sanitization providing my angularjs
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel|blob|cdvfile|content):|data:image\//);
 
 })
@@ -20,17 +17,19 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
       StatusBar.styleDefault();
     }
 
-    $rootScope.userEmail = null;
+    //setting user email to null at the beginning
+   $rootScope.userEmail = null;
 
+   //logout event provided by firebase
   $rootScope.$on('$firebaseSimpleLogin:logout', function(e, user) {
-    console.log($state);
     $rootScope.userEmail = null;
     $state.go('login.signin');
       });
 
+  //for showing the notifications
     $rootScope.show = function(text){
       $rootScope.loading = $ionicLoading.show({
-        content: text ? text: 'Loading...',
+        template: text ? text: 'Loading...',
         animation: 'fade-in',
         showBackdrop: true,
         maxWidith: 200,
@@ -38,10 +37,12 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
       });
     };
 
+    //notification for hiding the ionicloading
     $rootScope.hide = function(){
       $ionicLoading.hide();
     }
 
+    //for notifying the notifications using the custom text
      $rootScope.notify = function(text, time) {
             var time = time || 999;
             $rootScope.show(text);
@@ -50,6 +51,7 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
             }, time);
         };
 
+    //for logging out 
     $rootScope.logout = function(){
       Auth.logout()
       $rootScope.notify('Succesfully Logged out!!');
@@ -57,6 +59,7 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
 
   });
 })
+//routers for this app
 .config(function($stateProvider, $urlRouterProvider){
   $stateProvider
     .state('tab', {
@@ -140,6 +143,7 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
     })
     $urlRouterProvider.otherwise('/login/signin');
 })
+//constant for this projects
   .constant('FIREBASE_URL','https://remember-me.firebaseio.com/notes')
   .constant('MFB_URL', 'https://remember-me.firebaseio.com/messages')
   .constant('IFB_URL', 'https://remember-me.firebaseio.com/images')

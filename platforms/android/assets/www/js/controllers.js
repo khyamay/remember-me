@@ -1,6 +1,7 @@
 angular.module('mainApp.controllers', [])
 	.controller('loginCtrl', function($scope, $rootScope, $firebaseSimpleLogin, $window, $state, Auth){
 		
+		//check to see if the users logged or not
 		if (Auth.signedIn()) {
 			$state.go('tab.notes');
 			} else {
@@ -12,33 +13,39 @@ angular.module('mainApp.controllers', [])
 			password: ''
 		};
 
+		//using firebase login event to see if user are logged it, if they are they wll be got notes page 
 		$scope.$on('$firebaseSimpleLogin:login', function(e, user){
 				$rootScope.userEmail = user.email;
   	 			 $state.go('tab.notes');
 			});
 
+		//logging and authenticating the users
 		$scope.validateUser = function (){
 		$rootScope.notify('Please wait... Authenticating', 999);
 
 			var email = this.user.email,
 				password = this.user.password;
 
+			//if both email and password are left empty then error message will be notified
 			if(!email || !password){
 				$rootScope.notify('Please fill up both fields');
 				return false;
 			}
 
+			//using Auth service for logging in the users
 			Auth.login($scope.user).then(function(){
 				 $state.go('tab.notes');
 			},function(error){
+
+				//using errors code from Firebase
 				if (error.code == 'INVALID_EMAIL'){
-					$rootScope.notify('Invalid Email Address');
+					$rootScope.notify('Invalid Email Address used!!');
 				}
 				else if (error.code == 'INVALID_PASSWORD'){
-					$rootScope.notify('Invalid Password');
+					$rootScope.notify('Invalid Password used!!');
 				}
 				else if (error.code == 'INVALID_USER'){
-					$rootScope.notify('Invalid User');
+					$rootScope.notify('Invalid User, Please try again with valid Username & Password!!');
 				}
 				else {
 					$rootScope.notify('Opps something went wrong. Please try it again later');
@@ -54,10 +61,11 @@ angular.module('mainApp.controllers', [])
 			conPassword:""
 		};
 
+		//registering new users
 		$scope.addUser = function(){
 				var user = $scope.user;
 
-
+				//Error message will be notified if all the fields are left empty
 				if(!user.email || !user.password || !user.conPassword){
 					$rootScope.notify('Please fill up all the fields!!');
 					return false;
@@ -73,12 +81,15 @@ angular.module('mainApp.controllers', [])
 
 				var register = Auth.register(user);
 
+				//Using Auth service for registering the users in Firebae
 				register.then(function(user){
 					$rootScope.notify('Successfully registered!!!', 999);
 					$window.location.href= "#/login/signin";
 
 				}, function(error){
 					$rootScope.hide();
+
+					//Error Code from Firebase
 						if (error.code == 'INVALID_EMAIL'){	
 							$rootScope.notify('Invalid Email Address');
 					}
@@ -95,8 +106,8 @@ angular.module('mainApp.controllers', [])
 	})
 	.controller('notesCtrl', function($rootScope, $scope, $ionicModal, $firebase, $timeout, FIREBASE_URL){
 		//initializing empty notes
-		
 		$scope.notes = [];
+
 		//creating new instance of Firebase using base url
 		var notesList = new Firebase(FIREBASE_URL + escapeEmailAddress($rootScope.userEmail));
 
@@ -111,6 +122,7 @@ angular.module('mainApp.controllers', [])
 						$scope.notes.push(note[key]);
 					}
 				}
+				//checking to see if there's any notes 
 				if ($scope.notes.length == 0){
 					$scope.noNotes = true;
 				} else {
@@ -184,18 +196,21 @@ angular.module('mainApp.controllers', [])
 
 	})
 	.controller('picturesCtrl', function($scope, $rootScope, $ionicModal, $firebase, IFB_URL, $timeout){
-		// $scope.pictures = Pictures.all();
 		
-		//for calling uploading page
+		//using ionic modal for calling upload page
 		$ionicModal.fromTemplateUrl('templates/upload.html', function(modal){
 			$scope.modal = modal;
 		});
 
+		//for calling upload page
 		$scope.upload = function(){
 			$scope.modal.show();
 		}
 		
+		//Creating empty list of images
 		$scope.images = [];
+
+		//defining imageList variable using Firebase url and users email
 		var imageList = new Firebase(IFB_URL + escapeEmailAddress($rootScope.userEmail));
 
 		//using on listener for value event using snapshot of firebase
@@ -211,6 +226,7 @@ angular.module('mainApp.controllers', [])
 					}
 				}
 
+			//Checking to see if there any images 
 			if ($scope.images.length == 0) {
 					$scope.noImage = true;
 						} else { 
@@ -239,8 +255,10 @@ angular.module('mainApp.controllers', [])
 
 		};
 
-
+		//using image gallery of android device
 		$scope.getPhoto = function(){
+			
+			//using camera service for getting the pictures from image gallery
 			Camera.getPicture().then(function(imageData){
 				$scope.imageURI = "data:image/png;base64," + imageData;
 			}, function(err){
@@ -248,7 +266,7 @@ angular.module('mainApp.controllers', [])
 			});
 		};
 
-
+		//using camera of android device
 		$scope.PhotoLibrary = function (){
 			if (navigator.camera){
 				 navigator.camera.getPicture( photoSuccess, photoError,
@@ -264,29 +282,31 @@ angular.module('mainApp.controllers', [])
 				}
 			};
 
+		//Wwhen the picture taken fro camera is success, this function will be called
 		 function photoSuccess(imageData) {
 			$scope.image = document.getElementById('smallimage');
-		    // hack until cordova 3.5.0 is released
+		   
+		    //a workaround to use Storage Access Framework in Cordova
 		  	$timeout(function(){	
 				if (imageData.substring(0,21)=="content://com.android") {
 		      	var photo_split=imageData.split("%3A");
 		      	imageData="content://media/external/images/media/"+photo_split[1];
 		    	}
 		    
+		    //converting images into base64
 			   	$scope.imageURI = "data:image/png;base64," + imageData;
 			   	$scope.image.src = $scope.imageURI;
 			});
 
 
 		}
-
+			//error message 
 		  function photoError(message) {
 		    console.log('Failed because: ' + message);
   		}
 
 
-		//for uploading
-
+		//for uploading images in Firebase for image gallery
 		$scope.UploadPicture = function() {   
 	        var myImg = $scope.imageURI;
 	        var image = {
@@ -294,19 +314,20 @@ angular.module('mainApp.controllers', [])
 				created: Date.now()
 			}
 	         var imageList = new Firebase(IFB_URL + escapeEmailAddress($rootScope.userEmail));
-
 			$firebase(imageList).$add(image);
 			$scope.modal.hide();
 			$scope.imageURI = "";
     }
 
+    //uploading images in Firebase for camera
     function onUploadSuccess(imageData){
+   
     var imageList = new Firebase(IFB_URL + escapeEmailAddress($rootScope.userEmail));				
-	
 	$firebase(imageList).$add(imageData);
     
     }
 
+    //error message when the upload fails
     function onUploadFail(message){
     	alert('Failed because:' + message);
     }
@@ -320,7 +341,7 @@ angular.module('mainApp.controllers', [])
 		messageList.on('value', function(snapshot){
 		var message = snapshot.val();
 				$timeout(function(){	
-				//itirating over the list of not
+				//itirating over the list of notes
 				for (var key in message){
 					if (message.hasOwnProperty(key)){
 						message[key].key = key;
@@ -378,7 +399,7 @@ angular.module('mainApp.controllers', [])
 		});
 	});
 
-//Since Firebase does not allow '.' hence replacing '.' with ',' 
+//Since Firebase does not allow '.' hence replacing '.' with ',' code provided by Firebase
 	function escapeEmailAddress(email){
 			if (!email) return false
 				email = email.toLowerCase();
