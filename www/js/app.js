@@ -23,14 +23,13 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
     $rootScope.userEmail = null;
 
   $rootScope.$on('$firebaseSimpleLogin:logout', function(e, user) {
-    console.log($state);
     $rootScope.userEmail = null;
     $state.go('login.signin');
       });
 
     $rootScope.show = function(text){
       $rootScope.loading = $ionicLoading.show({
-        content: text ? text: 'Loading...',
+        template: text ? text: 'Loading...',
         animation: 'fade-in',
         showBackdrop: true,
         maxWidith: 200,
