@@ -6,7 +6,7 @@
 * ~~Able to upload the picture~~ - Done
 * ~~Able to delete the upload picture~~ - Done 
 * ~~Add motivation message using API's (if found)~~ - Not Found, used the firebase to store some qoutes and retrieve it
-* ~~Backend or LocalStroge~~ - Used Firebase
+* ~~Backend or LocalStorage~~ - Used Firebase
 
 ## To-Do List (For learning Purpose)
 * Categorizing the motivational messages

@@ -71,7 +71,7 @@ angular.module('mainApp.controllers', [])
 					return false;
 				}
 
-
+				//checking if the passwords match or not
         		if (user.password !== user.conPassword) {
           			$rootScope.notify('Passwords must match');
           			return false;
