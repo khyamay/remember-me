@@ -1,5 +1,5 @@
 
-angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.services', 'routeSecurity', 'simpleLoginTools'])
+angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.services', 'routeSecurity'])
 
 .config(function($compileProvider){
   // whitelisting of safe urls during img[src] sanitization providing my angularjs
