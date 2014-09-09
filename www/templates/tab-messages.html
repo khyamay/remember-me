@@ -1,17 +1,17 @@
-      <ion-view title="Motivational Message">
-      <ion-nav-buttons side="right">
-       <button class="button button-clear" ng-click="logout()">Logout</button>
-          </ion-nav-buttons>
-        <ion-content>
-        	<ion-list>
-        		<ion-item ng-repeat="message in messages" type="item-text-wrap">
-        			<div class="card">
-  						<div class="item item-text-wrap">
-    					<p class="qoute"> {{message.message}}</p>
-    					- <b>{{message.by}}</b>
-					  	</div>
-					</div>
-        		</ion-item>
-       		 </ion-list>
-          </ion-content>
-        </ion-view>
+<ion-view title="Motivational Message">
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="logout()">Logout</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="message in messages" type="item-text-wrap">
+                <div class="card">
+                    <div class="item item-text-wrap">
+                        <p class="qoute">{{message.message}}</p>
+                        - <b>{{message.by}}</b>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

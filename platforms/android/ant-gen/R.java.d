@@ -16,6 +16,7 @@
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/res/values/strings.xml \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/res/xml/config.xml \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/ant-build/res/drawable/icon.png \
+/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/ant-build/res/drawable-hdpi/ic_launcher.png \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/ant-build/res/drawable-hdpi/icon.png \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/ant-build/res/drawable-land-hdpi/screen.png \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/ant-build/res/drawable-land-ldpi/screen.png \

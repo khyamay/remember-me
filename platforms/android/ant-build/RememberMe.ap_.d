@@ -51,7 +51,6 @@
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/js/controllers.js \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/js/services.js \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/lib/ionic \
-/Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/lib/module.simpleLoginTools.js \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/lib/routeSecurity.js \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/lib/ionic/css \
 /Users/khyamay/desktop/sideprojects/remember-me/platforms/android/assets/www/lib/ionic/fonts \
