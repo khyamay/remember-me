@@ -131,18 +131,15 @@ angular.module('mainApp.controllers', []).controller('loginCtrl', function($scop
         console.log('deleted');
     };
 
-
     //this is used for calling newNotes.html when users click on newNote button
     $ionicModal.fromTemplateUrl('templates/newNotes.html', function(modal) {
         $scope.modal = modal;
     });
 
-
     //opens new newNews.html page 
     $scope.newNotes = function() {
         $scope.modal.show();
     };
-
 
     //Cleanup the modal when we're done with it!
     $scope.$on('$destroy', function() {
@@ -166,7 +163,6 @@ angular.module('mainApp.controllers', []).controller('loginCtrl', function($scop
             }
         });
     });
-
 
     //updating the single note
     $scope.updateNote = function(note) {
@@ -222,7 +218,6 @@ angular.module('mainApp.controllers', []).controller('loginCtrl', function($scop
                 $scope.noImage = false;
             }
 
-
         });
     });
 
@@ -238,7 +233,6 @@ angular.module('mainApp.controllers', []).controller('loginCtrl', function($scop
     //for closing the modal
     $scope.close = function(modal) {
         $scope.modal.hide();
-
         $scope.imageURI = "";
 
     };
@@ -270,9 +264,7 @@ angular.module('mainApp.controllers', []).controller('loginCtrl', function($scop
         }
     };
 
-    //Wwhen the picture taken fro camera is success, this function will be called
-
-
+    //When the picture taken fro camera is success, this function will be called
     function photoSuccess(imageData) {
         $scope.image = document.getElementById('smallimage');
 
@@ -287,16 +279,11 @@ angular.module('mainApp.controllers', []).controller('loginCtrl', function($scop
             $scope.imageURI = "data:image/png;base64," + imageData;
             $scope.image.src = $scope.imageURI;
         });
-
-
     }
     //error message 
-
-
     function photoError(message) {
         console.log('Failed because: ' + message);
     }
-
 
     //for uploading images in Firebase for image gallery
     $scope.UploadPicture = function() {
@@ -312,8 +299,6 @@ angular.module('mainApp.controllers', []).controller('loginCtrl', function($scop
     }
 
     //uploading images in Firebase for camera
-
-
     function onUploadSuccess(imageData) {
 
         var imageList = new Firebase(IFB_URL + escapeEmailAddress($rootScope.userEmail));
@@ -322,12 +307,9 @@ angular.module('mainApp.controllers', []).controller('loginCtrl', function($scop
     }
 
     //error message when the upload fails
-
-
     function onUploadFail(message) {
         alert('Failed because:' + message);
     }
-
 
 }).controller('messagesCtrl', function($scope, MFB_URL, $timeout) {
     // $scope.messages = Messages.all();
