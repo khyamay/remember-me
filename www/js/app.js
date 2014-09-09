@@ -143,7 +143,7 @@ angular.module('mainApp', ['ionic', 'firebase', 'mainApp.controllers', 'mainApp.
     })
     $urlRouterProvider.otherwise('/login/signin');
 })
-//constant for this projects
+//constant for urls and redirect path
   .constant('FIREBASE_URL','https://remember-me.firebaseio.com/notes')
   .constant('MFB_URL', 'https://remember-me.firebaseio.com/messages')
   .constant('IFB_URL', 'https://remember-me.firebaseio.com/images')
