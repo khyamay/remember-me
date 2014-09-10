@@ -17,4 +17,5 @@
 * Notifications while deleting, editing, adding notes, pictures etc.
 * Using ExpressJS as backend for learning it
 * Adding testing
+* Adding Security Rules
 
