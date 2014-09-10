@@ -1,3 +1,7 @@
+/*
+  Simple library provided by Firebase for their auglarfire-seed project
+*/
+
 (function (angular) {
   'use strict';
   angular.module('routeSecurity', [])
