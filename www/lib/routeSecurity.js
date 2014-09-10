@@ -1,5 +1,5 @@
 /*
-  Simple library provided by Firebase for their auglarfire-seed project
+  Simple library provided by Firebase for their auglarfire-seed project for securing the routes
 */
 
 (function (angular) {
